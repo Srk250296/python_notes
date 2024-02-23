@@ -1,0 +1,84 @@
+
+Github:
+-------
+- Github is centralized code hosting platform. It offers both distributed version control and source code management functionality of Git.
+- Also facilitates with many of its features, such as access control and collabaration.
+- VCS (Version Control System)
+- SCM (Source Code Management)
+
+Ex: VCS
+Gmail 1.0: registration, login, inbox
+Gmail 2.0 : registration, login, inbox, Sent items, drafts, primary
+Gmail 3.0 : registration, login, inbox, Sent items, drafts, primary, google meet
+
+Gmail 2.0: registration, login, inbox, Sent items, drafts, primary
+
+
+What is repository:
+-------------------
+- Repositories in GIT contain a collection of files of various different versions of a Project.
+- Represents a project
+
+what is a branch:
+------------------
+specific to some task
+
+master branch:
+---------------
+- main branch having finalized code for a project.
+- all features will be merged to master branch
+
+Feature branch:
+---------------
+- Specific to one task, 
+- once code implementation is completed we can raise a Pull Request to merge our feature branch to master
+- 
+
+Pull Request:
+-------------
+Raise a request To merge our code from one feature to another feature
+
+Merge Request:
+--------------
+- accepting code pulll request from a feature branch to our branch 
+- Accepting the changes
+- Before merging we need to review the changes, if those all fine, then only we can merge.
+- If there any changes required we can write a review message and close the PR(Pull Request). That means PR is rejected.
+
+
+what is merge conflict:
+-----------------------
+
+- IF we suppose to see multiple pull request from multiple feature branches, 
+  for the same file and the same line having different code usage in different branches, then it will be a merge conflict.
+
+- We can't merge the code from feature to master directly if we have merge conflicts, 
+  first we need to resolve those conflicts and can able to merge.
+  
+- We can resolve these merge conflicts by clicking on resolve conflicts and review & modify the changes 
+  i.e which changes are required are kept alone and remove the unwanted changes. And click on commit.
+
+- Now we can able to merge the code from feature.
+
+
+==================================================
+1. What is github
+2. what is repository
+3. what is a branch
+4. what is commit:
+5. what is Pull request
+6. what if master branch
+7. what is merge conflict
+8. what is fork
+9. Pycharm integration
+10. commit
+11. Pull 
+12. push
+13. merge
+14. fetch
+15. rebase
+16. update project
+17. checkout
+ 
+
+

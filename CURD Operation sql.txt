@@ -1,0 +1,51 @@
+CURD:
+=====
+
+Create:
+------- 
+
+create table student(
+s_id Int PK,
+s_nm Varchar2(20) Not null,
+marks Int,
+);
+
+Insert into(
+s_id,
+s_nm,
+marks)
+values(
+114,
+ss,
+77
+)
+
+
+Retrieve:
+---------
+
+select * from student where s_id = 114;
+
+Update:
+-------
+
+update table student (modify s_nm = 'somu' where s_nm = 'ss');
+
+update table student (add result int);
+
+
+Detele:
+-------
+
+drop table student; -- drops whole table
+delete from student where result = 'fail'; -- delete only failure students
+
+
+
+
+
+
+
+
+
+

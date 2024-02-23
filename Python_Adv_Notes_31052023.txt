@@ -1,0 +1,1066 @@
+Python Advanced:
+----------------
+
+1. OOP'S part-1: Classes & objects
+2. OOP'S part-2: Inheritance
+3. OOP'S part-3: Polymorphism
+4. OOP'S part-4: Abstraction
+5. Exception Handling
+6. File Handling
+7. Multi-Threading
+8. Python Database programming
+9. Regular Expressions & Web scraping
+10. Decorators
+11. Generators
+12. Assertions
+13. Python Logging
+
+
+================================================================================
+
+
+
+OOP'S part-1: Classes & objects:
+================================
+
+class:
+------
+- In python everything is an object.
+- To create objects we required some Model or Plan or Blue print, which is nothing but class.
+- We can write class to represent properties(attributes) and actions(behaviour) of object.
+
+- Properties cab be represented by variables.
+- Actions can be represented by Methods.
+
+- Hence, class contains both variables, methods.
+
+
+
+How to define a class:
+---------------------
+- We can define a class by using class keyword.
+Syntax:
+-------
+class className:
+	''' documentation string '''
+	variables # instant variables, static variables and local variables
+	methods   # instant methods, class methods and static methods
+
+
+- Documentation string represents description of the class.
+- Within the class doc string is Optional.
+- We can get doc string by using,
+	1). print(className.__doc__)
+	2) help(className)
+
+Ex:
+class Student:
+    ''' This is a demo class program reg. student details'''
+
+print(Student.__doc__)
+help(Student)
+
+- Within the class we can represent data by using variables.
+- There are 3 types of variables are allowed.
+	1. Instant variables 
+	2. Static variables
+	3. Local variables
+
+
+
+- Within the class we can represent operations by using methods.
+- There are 3 types of methods are allowed.
+	1. Instant methods
+	2. Class methods
+	3. Static methods
+
+
+- We can define methods within the class using def keyword.
+
+Ex: 
+class Student:
+    ''' This is a demo class program reg. student details'''
+    def __init__(self):
+        self.name = 'Rohit'
+        self.age = 40
+        self.marks = 80
+    def display(self):
+        print("Name is: ", self.name)
+        print("Age is: ", self.age)
+        print("Marks: ", self.marks)
+
+
+
+Object:
+------
+- Pysical existance of a class is nothing but object.
+- We can create any number of objects for a class.
+
+Syntax: reference_variable = className()
+Ex: stu = Student()
+
+
+Reference Variable:
+-------------------
+- The variable which can be used to refer object is called reference variable.
+- By using reference variable we can access properties(variables) and methods.
+
+Ex: Take input data while creating object
+class Student:
+    ''' This is a demo class program reg. student details'''
+    def __init__(self, name, age, marks):
+        self.name = name
+        self.age = age
+        self.marks = marks
+    def display(self):
+        print("Name is: ", self.name)
+        print("Age is: ", self.age)
+        print("Marks: ", self.marks)
+
+stu = Student('Rohit', 30, 90)
+stu.display()
+print(stu.marks)
+
+
+
+self:
+-----
+- self is the default variable which is always pointing the current object.
+- By using self we can access instant variables and instant methods of object.
+
+Note:
+- self should be first parameter inside constructor.
+	Ex: def __init__(self, name, age, marks):
+- self should be first parameter inside instant methods.
+	Ex: def display(self):
+
+
+Constructor: 
+------------ 
+- Constructor: __init__(self)
+- Constructor is a special method in python.
+- Constructor will be executed automatically at the time of object creation.
+- The main purpose of Constructor is to declare and initialize instant variables.
+- Per object Constructor will be executed only once.
+- Constructor can take atleast one argument(i.e self)
+- Constructor will be optional and if we are not providing any constructor then python will provide default constructor.
+
+Ex:
+class A:
+    def __init__(self):
+        print("constructor calling...")
+        self.a = 100
+
+    def disply(self):
+        print("method calling...")
+
+
+obj = A()
+obj.disply()
+
+O/p:
+constructor calling...
+method calling...
+
+
+Difference between Methods and Constructors:
+-------------------------------------------
+1. 	Methods: method name should be anything
+	Constructor: name should be compulsory  __init__
+
+2.	Methods: Methods will be execute only when we call that method
+	Constructor: Constructor will be executed automatically at the time of object creation
+
+3.    Methods: Methods can be called any number of times per one object.
+	Constructor: Constructor will be executed only once per object.
+
+4.	Methods: Inside methods we can write business logic.
+	Constructor: Inside Constructor we can declare and initialize instant variables.
+
+
+
+Types of Variables:
+===================
+
+* There are 3 types of variables.
+	1. Instant variables (Object level variables)
+	2. Static variables (Class level variables)
+	3. Local variables (Method level variables)
+
+
+
+1. Instant variables: 
+---------------------
+- Also called as Object level variables
+- Value of a variable is varied from object to object
+- For every object a seperate copy of instance variables will be created.
+
+- Declare
+- Access
+- Delete
+
+Ex:
+class A:
+    def __init__(self, a, b):
+        print("constructor calling...")
+        self.a = a # Instance variables
+        self.b = b # instance variables
+
+    def show(self):
+        print("method calling...", self.a + self.b)
+
+obj = A(100, 200) ## a=100, b=200
+obj.show()
+obj.show()
+
+obj1 = A(200, 300) ## a=200, b=300
+obj1.show()
+
+- In the above example, 
+	For obj: a=100, b=200
+	For obj1: a=200, b=300
+- a, b varied for obj, obj1.
+
+A) Where we can declare Instance variables:
+-------------------------------------------
+1) Inside Constructor by using self variable
+2) Inside Instance method by using self variable
+3) Outside of the class by using object reference variable
+
+
+1) Inside Constructor by using self variable:
+- We can declare instance variables inside a Constructor by using self keyword.
+- Once we create object, automatically these variables will be added to the object.
+
+
+2) Inside Instance method by using self variable:
+-------------------------------------------------
+- We can also declare Instance variables Inside Instance method by using self variable
+- If any instance variable declared inside a instance method, these instance variables will be added once we call that method.
+
+
+3) Outside of the class by using object reference variable:
+-----------------------------------------------------------
+- We can also add instance variables outside the class by using obj_ref_var.
+
+Ex:
+class A:
+    def __init__(self, a, b):
+        print("constructor calling...")
+        self.a = a
+        self.b = b
+
+    def show(self, c):
+        self.c = c
+        print("method calling...\nsum is: ", self.a + self.b)
+        print("c is :", self.c)
+
+obj = A(100, 200)
+obj.show(500)
+obj.k = 20
+
+obj1 = A(200, 300)
+obj1.show(700)
+obj1.k = 30
+
+print("k is for obj: ", obj.k)
+print("k is for obj1: ", obj1.k)
+
+---------------------------------------------
+
+B) How to Access Instance Variables:
+------------------------------------
+1) Inside Constructor by using self variable (self.variable_name)
+2) Inside Instance method by using self variable (self.variable_name)
+3) Outside of the class by using object reference variable (obj_ref_var.variable_name)
+
+C) How to Delete Instance Variables:
+------------------------------------
+1) Inside Constructor by using self variable (del self.variable_name)
+2) Inside Instance method by using self variable (del self.variable_name)
+3) Outside of the class by using object reference variable (del obj_ref_var.variable_name)
+
+
+Ex: Instance variables: Declare, Access, Delete
+
+class A:
+    def __init__(self, a, b):
+        print("constructor calling...")
+        self.a = a
+        self.b = b
+        self.d = 500
+        print('a is inside constuctor: ', self.a)
+        del self.d
+
+    def show(self, c):
+        self.c = c
+        self.e = 10
+        print("method calling...\nsum is: ", self.a + self.b)
+        print("c is :", self.c)
+        print("a is inside instance method: ", self.a)
+        del self.e
+
+
+obj = A(100, 200)
+print("a is outside class: ", obj.a)
+obj.show(500)
+obj.k = 20
+print("k is for obj: ", obj.k)
+
+print(obj.__dict__)
+
+
+del obj.a
+del obj.b
+del obj.k
+
+
+obj1 = A(200, 300)
+obj1.show(700)
+obj1.k = 30
+print("k is for obj1: ", obj1.k)
+
+print(obj1.__dict__)
+
+
+Note:
+-----
+- If we change values of a instance variables of one object then those change will not be reflected to the remaining objects.
+- Because those are seperate copy of instance variables are available.
+
+
+
+2. Static Variables: Class level variables
+--------------------
+- Also called as Class level variables
+- Value of a variable is not varied from object to object
+- We can declare within the class directly but outside the constuctor and methods.
+- For total class only one copy of static variables will be created and shared by all objects of that class.
+- For every object a same copy of static variables will be created.
+- We can access static variables either by class name or by object reference. But recomended to use class name.
+
+- Declare (Create)  -- C
+- Access (Retrieve) -- R
+- Modify (Update)   -- U
+- Delete (Delete)   -- D
+
+-- CRUD or CURD operations
+
+Various places to Declare Static variables:
+-------------------------------------------
+- In general, we can declare Within the class directly but outside of any methods.
+- Inside connstructor by using class name
+- Inside instance method by using class name
+- Inside the class methods by using class name or cls variable
+- Inside Static method by using class name
+- We can not declare outside(doesn't make sense)
+
+Ex:
+class A:
+    a = 100
+    def __init__(self):
+        A.b = 200
+
+    def m1(self):
+        A.c = 300
+
+    @classmethod
+    def m2(cls):
+        A.d = 400
+        cls.e = 500
+
+    @staticmethod
+    def m3():
+        A.f = 600
+
+obj = A()
+obj.m1()
+obj.m2()
+obj.m3()
+print(A.__dict__)
+
+
+How to Access Static Variable:
+-----------------------------
+- Inside connstructor: by using either class name or self
+- Inside instance method: by using either class name or self variable
+- Inside the class method: by using either class name or cls variable
+- Inside Static method: by using class name
+- We can access outside the class: by using either object reference variable or class name
+
+
+Ex:
+class A:
+    a = 100
+    def __init__(self):
+        A.b = 200
+        print("a is in constructor using class name: ", A.a)
+        print("a is in constructor using self: ", self.a)
+
+    def m1(self):
+        A.c = 300
+        print("m1: a is using class name: ", A.a)
+        print("m1: b is using class name: ", A.b)
+        print("m1: a is using self name: ", self.a)
+        print("m1: b is using self name: ", self.b)
+
+    @classmethod
+    def m2(cls):
+        A.d = 400
+        cls.e = 500
+        print("m2: a is using class name: ", A.a)
+        print("m2: b is using class name: ", A.b)
+        print("m2: c is using class name: ", A.c)
+        print("m2: a is using cls name: ", cls.a)
+        print("m2: b is using cls name: ", cls.b)
+        print("m2: c is using cls name: ", cls.c)
+
+    @staticmethod
+    def m3():
+        A.f = 600
+        print("m4: a is using class name: ", A.a)
+        print("m4: b is using class name: ", A.b)
+        print("m4: c is using class name: ", A.c)
+        print("m4: d is using class name: ", A.d)
+        print("m4: e is using class name: ", A.e)
+        print("m4: f is using class name: ", A.f)
+obj = A()
+obj.m1()
+obj.m2()
+obj.m3()
+#print(A.__dict__)
+
+print("::: outside the class using Object reference variable: a is :", obj.a)
+print("::: outside the class using Object reference variable: b is :", obj.b)
+print("::: outside the class using Object reference variable: c is :", obj.c)
+print("::: outside the class using Object reference variable: d is :", obj.d)
+print("::: outside the class using Object reference variable: e is :", obj.e)
+print("::: outside the class using Object reference variable: f is :", obj.f)
+
+print("::: outside the class using class name: a is :", A.a)
+print("::: outside the class using class name: b is :", A.b)
+print("::: outside the class using class name: c is :", A.c)
+print("::: outside the class using class name: d is :", A.d)
+print("::: outside the class using class name: e is :", A.e)
+print("::: outside the class using class name: f is :", A.f)
+
+
+
+Where we can modify the static variables:
+-----------------------------------------
+- Anywhere either within the class or outside the class we can modify by using class name.
+- But inside the class method by using either class name or cls variabe.
+
+Ex:
+class A:
+    a = 100
+    a1 = 1000
+    def __init__(self):
+        A.b = 200
+        print("a is in constructor using class name: ", A.a)
+        print("a is in constructor using self: ", self.a)
+
+    def m1(self):
+        A.c = 300
+        print("m1: a is using class name: ", A.a)
+        print("m1: b is using class name: ", A.b)
+        print("m1: a is using self name: ", self.a)
+        print("m1: b is using self name: ", self.b)
+        A.a = 10 # modify
+        self.a1 = 1  # modify, becomes instance variable.
+        print("m1: a1", A.a1) ## 1000
+        print("m1: a1", self.a1) ## 1
+
+
+    @classmethod
+    def m2(cls):
+        A.d = 400
+        cls.e = 500
+        A.b = 20    # modify
+        cls.c = 30  # modify
+        print("m2: a is using class name: ", A.a)
+        print("m2: b is using class name: ", A.b)
+        print("m2: c is using class name: ", A.c)
+        print("m2: a is using cls name: ", cls.a)
+        print("m2: b is using cls name: ", cls.b)
+        print("m2: c is using cls name: ", cls.c)
+        print("m2: a1 cls: ", cls.a1) ## 1000
+
+    @staticmethod
+    def m3():
+        A.f = 600
+        A.d = 40    ## modify
+        print("m4: a is using class name: ", A.a)
+        print("m4: b is using class name: ", A.b)
+        print("m4: c is using class name: ", A.c)
+        print("m4: d is using class name: ", A.d)
+        print("m4: e is using class name: ", A.e)
+        print("m4: f is using class name: ", A.f)
+obj = A()
+obj.m1()
+obj.m2()
+obj.m3()
+#print(A.__dict__)
+
+print("::: outside the class using Object reference variable: a is :", obj.a)
+print("::: outside the class using Object reference variable: b is :", obj.b)
+print("::: outside the class using Object reference variable: c is :", obj.c)
+print("::: outside the class using Object reference variable: d is :", obj.d)
+print("::: outside the class using Object reference variable: e is :", obj.e)
+print("::: outside the class using Object reference variable: f is :", obj.f)
+
+print("::: outside the class using class name: a is :", A.a)
+print("::: outside the class using class name: b is :", A.b)
+print("::: outside the class using class name: c is :", A.c)
+print("::: outside the class using class name: d is :", A.d)
+print("::: outside the class using class name: e is :", A.e)
+print("::: outside the class using class name: f is :", A.f)
+print("::: outside the class using class name: a1 is :", A.a1)
+
+
+* Note: By using obj_ref_var / self we can read static variables but we cannot modify or delete.
+	- If we are trying to modify, then a new instance variable will be added to that particular object.
+
+
+
+How to delete Static variables:
+------------------------------
+- We can delete static variables from anywhere by using,
+Syntax: del classname.variablename
+
+- But inside the class method, 
+Syntax: del classname.variablename (or) del cls.variablename
+
+Ex:
+class A:
+    a = 100
+    a1 = 1000
+    def __init__(self):
+        A.b = 200
+        del A.a
+
+    def m1(self):
+        A.c = 300
+        del A.b
+
+
+    @classmethod
+    def m2(cls):
+        A.d = 400
+        cls.e = 500
+        del A.c
+        # del cls.c
+
+    @staticmethod
+    def m3():
+        A.f = 600
+        A.d = 40    ## modify
+        del A.d
+obj = A()
+obj.m1()
+obj.m2()
+obj.m3()
+#print(A.__dict__)
+
+del obj.a
+# del A.a
+
+print("::: outside the class using class name: a is :", A.a) ## Error
+
+
+
+* Note: By using obj_ref_var / self we can read static variables but we cannot modify or delete.
+	- If we are trying to modify, then a new instance variable will be added to that particular object.
+
+
+
+3. Local Variables:
+-------------------
+- Sometimes to meet temporary requirements of  programmer, we can  declare variables inside a method directly, such type of variables are called
+  Static variables
+- Also called as Temporary variables
+- Also called as Method level variables
+- Created at the time of method execution and destroy once method completes
+- Local variables can not be accessed from outside of method
+
+
+Ex:
+class A:
+    a = 100
+    a1 = 1000
+    def __init__(self):
+        A.b = 200
+
+    def m1(self):
+        a2 = 50 ## local var
+
+    @classmethod
+    def m2(cls):
+        A.d = 400
+        cls.e = 500
+        a4 = 600 ## local var
+        print(a4+A.d)
+
+    @staticmethod
+    def m3():
+        A.f = 600
+        k = 500 ## local var
+        print(A.f+k)
+
+obj = A()
+obj.m1()
+obj.m2()
+obj.m3()
+
+#print(a2)  ## Error
+
+
+===============================
+
+
+Types of Methods
+================
+
+- Inside python class, 3 types of methods are alllowed.
+
+	1. Instance Methods
+	2. Class Methods
+	3. Static Methods
+
+
+1. Instance Methods:
+--------------------
+- Inside Method implementation, if we are using instance variables then such type of methods we are called 'Instance Methods'.
+- Inside instance method declaration, we have to pass self variable.
+	syntax: def m1(self): pass
+- By using self varable inside method, we can able to access instance variables
+- Within the class we can call instance method by using self variable and from outside the class by using object reference variable.
+
+
+
+Ex: Student class, grade
+
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+    def show(self):
+        print("Hi, ", self.name)
+
+    def grade(self):
+        if self.marks >= 60:
+            print("Grade A")
+        elif self.marks >= 50:
+            print("Grade B")
+        elif self.marks >= 40:
+            print("Grade C")
+        else:
+            print("Grade F")
+
+
+
+n = int(input("enter no of students: "))
+for i in range(1, n+1):
+    name = input(f"enter student {i} name: ")
+    marks = int(input("enter marks: "))
+    obj = Student(name, marks)
+    obj.show()
+    obj.grade()
+
+
+
+Setters and Getters:
+--------------------
+- We can set and get the value of instance variables by using setter and getter methods.
+
+Setter method:
+--------------
+- Setter methods can be used to set values to the instance variables.
+- Also called as mutator methods.
+
+Syntax:
+def setVariable(self, variable):
+	self.variable = variable
+
+Ex:
+def setName(self, name):
+	self.name = name
+
+
+Getter methods:
+---------------
+- Getter methods can be used to get values of the instance variables.
+- Also called as accessor methods.
+
+Syntax:
+def getVariable(self):
+	return self.variable
+
+Ex:
+def getName(self):
+	return self.name
+
+Ex1: Setters, Getters
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+    def setName(self, name):
+        self.name = name
+
+    def getName(self):
+        print("Hi,", self.name)
+
+    def grade(self):
+        if self.marks >= 60:
+            print("Grade A")
+        elif self.marks >= 50:
+            print("Grade B")
+        elif self.marks >= 40:
+            print("Grade C")
+        else:
+            print("Grade F")
+
+
+
+obj = Student('Rohit', 56)
+
+obj.setName('Pratap')
+obj.getName()
+
+
+Ex2:
+----
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+    def setresult(self):
+        if self.marks>=40:
+            self.result = 'Pass'
+        else:
+            self.result = 'Fail'
+
+    def getresult(self):
+        print(f"{self.name} result: ", self.result)
+
+    def grade(self):
+        if self.marks >= 60:
+            print("Grade A")
+        elif self.marks >= 50:
+            print("Grade B")
+        elif self.marks >= 40:
+            print("Grade C")
+        else:
+            print("Grade F")
+
+
+
+obj = Student('Rohit', 56)
+
+obj.setresult()
+obj.getresult()
+
+==================================================
+
+Class Methods:
+-------------
+
+
+
+
+Static Methods:
+---------------
+
+
+
+
+Inner classes:
+--------------
+class inside clas
+
+
+
+
+
+Garbage Collection:
+-------------------
+
+
+
+
+Destructors:
+------------
+del
+
+
+
+Polymorphism:
+-------------
+Poly-- Many
+Morphs -- Forms
+
+One having many forms ---> Polymorphism
+
+2 types:
+---------
+
+1. Overloading
+	a. Operator Overloading (for ex: +, *)
+	b. Method Overloading
+	c. Constructor Overloading
+2. Overriding
+	a. Method Overriding
+	b. Constructor Overriding
+
+
+
+Abstraction:
+============
+
+Abstraction Methods:
+-------------------
+- Sometimes we don't know about implementation, still we can declare a method. Such types of methods we are called Abstract methods.
+- Has only declaration but not implemented.
+- we can do by using @abstractmethod decorator
+- @abstractmethod is present in abc module
+- import abc, otherwise we will get error.
+
+
+Abstraction Class:
+------------------
+- Sometimes implementation of a class is not complete, such types are called Abstraction Class.
+- Every abstract class in python should be derived from ABC class, which is present in abc module.
+
+Interface:
+---------
+- In general if an abstract class contains only abstract methods
+
+
+Access modifiers: We have 3 types of access modifiers-
+=================
+Attributes:
+	- public Attributes (access anywhere, i.e in parent class, child class, outside the class)
+	- protected Attributes (access only in parent class, and child class only. _variable_name)
+	- private Attributes (access only in parent class, __variable_name)
+
+
+EX:
+==
+
+class A():
+    a = 100
+    _b = 200
+    __c = 300
+
+    def m1(self):
+        print("A-m1:parent a is :",A.a)
+        print("A-m1:parent b is :",A._b)
+        print("A-m1:parent c is :", A.__c)
+
+class B(A):
+    def m2(self):
+        print("B-m2:child a is :",A.a)
+        print("B-m2:child b is :", A._b)
+
+
+obj = A()
+obj.m1()
+print("outside: a: ",obj.a)
+print(obj._b)
+print("outside c is : ",obj._A__c) ## objref._classname__variablename
+
+
+Encapsulation in Python: 
+========================
+
+Encapsulation is a mechanism of wrapping the data (variables) and code acting on the data (methods) together as a single unit. In encapsulation, the variables of a class will be hidden from other classes, and can be accessed only through the methods of their current class.
+
+- variables of a class will be hidden from other classes, and can be accessed only through the methods of their current class
+
+================================
+** 4 pillers of OOPS: 
+
+1. Inheritance (access parent members in child)
+2. Abstraction(partially implemented)
+3. Polymorphism (one having many forms. overloading, overriding)
+4. Encapsulation (hiding the code)
+
+====================================
+
+Exception Handling:
+===================
+
+Types of Errors:
+1. Syntax Errors (invalid syntax)
+2. Run time Errors (Exceptions)
+
+Run time Errors:
+---------------
+- Also called as Exceptions
+- while executing the program if something goes wrong 
+  bcoz of end user input or program logic or memory problems etc.. 
+  then we will get Runtime Errors.
+
+- Exception handling concept applicable only for Runtime-Errors, but not for syntax errors.
+
+=> what is exception..??
+Ans: An unwanted and unexpected event that disturbs the normal flow of the program.
+Ex: ZeroDivisionError, FileNotFoundError, IndentationError, TypeError, ValueError, EOFLError, SleepingError
+
+
+Types of Exceptions:
+--------------------
+- There are 2 types of exceptions.
+	1. Predefined Exceptions (in-built)
+	2. User defined Exceptions
+
+Exception handling:
+-------------------
+syntax: 
+
+	try:
+		some logic(risky code)
+	except:
+		handling code/ alternative way
+	finally:
+		clean-up code
+
+- finally is optional
+- try - matched except should be compulsory
+
+Ex:
+===
+
+try:
+    print("stmt-1")
+    print("stmt-2")
+    print("stmt-3")
+    try:
+        print("stmt-4")
+        print("stmt-5")
+        print("stmt-6")
+    except:
+        print("stmt-7")
+    finally:
+        print("stmt-8")
+        print("stmt-9")
+except:
+    print("stmt-10")
+finally:
+    print("stmt-11")
+    print("stmt-12")
+
+else block:
+-----------
+
+Syntax:
+-------
+
+try:
+	some risky code
+except:
+	executed if error in try
+else:
+	will be executed if there is no exception in try
+finally:
+	executed if error occured or not
+
+Ex:
+===
+try:
+	print("some risky code")
+except:
+	print("executed if error in try")
+else:
+	print("will be executed if there is no exception in try")
+finally:
+	print("executed if error occured or not")
+
+
+Types of Exceptions:
+--------------------
+- There are 2 types of exceptions.
+	1. Predefined Exceptions (in-built)
+	2. User defined Exceptions
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+File Handling:
+==============
+
+Types of file:
+--------------
+ 2 Types:
+
+1. Text files (character data)
+2. Binary files (binary data like images, video files, audio files)
+
+
+
+open a file:
+------------
+- Before performing any operation (read/write) on the file, first we have to open that file.
+- for this we use python in-built function open()
+- while opening a file we have specify mode(read, write, append...)
+- syntax:  f = open(filename, mode)
+
+Types of mode:
+--------------
+1. "r" mode
+-----------
+- read mode
+- open an existing file to read
+- file pointer is positioned at beginning of the file.
+- if file exists it will open, if not exists it will through FileNotFoundError.
+- This is default mode
+
+2. "w" mode:
+-------------
+- write mode
+- open an existing file to write operation
+- if file exists, data will overridden, if file doesn't exists it will create a new file.
+- returns no. of characters are written.
+
+3. "a" mode:
+------------
+- append mode
+- open an existing file to append operation
+- it won't overridden the data to a file
+- If specified file is already exists it will append the data
+- If specified file doesn't exists then it will create a new file and write the data.
+- file pointer is at end of the existing file.
+
+4. "r+" mode:
+-------------
+- read and write mode
+- to read and write data into a file
+- Previous data in the file will not be deleted
+- File pointer is placed at end of the file.
+
+5. 
+
+close a file:
+-------------
+- After completing our operations on the file, we have to close the file.
+- closing a file is highly recommended
+- For this we have to use close() in-built function.
+- syntax: f.close()
+
+
+
+-- open, (read, or write save) close
+
+
+
+
+
+
+
+
+
+

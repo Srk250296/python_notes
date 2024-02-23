@@ -1,0 +1,2349 @@
+
+Python-Core:
+------------
+1. Introduction
+2. Identifiers
+3. Data Types
+4. Operators
+5. Conditional statements (if..else)
+6. Control flow Statements (for, while, break, continue)
+7. Collections (List, Tuple, Set, Dictionary)
+8. String
+9. List
+10. Tuple
+11. Set
+12. Dictionary
+13. Functions
+14. Modules
+15. Packages
+
+(15 to 20 days)
+
+Python-Advanced:
+----------------
+
+====================================================
+:::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Introduction:
+=============
+----------------
+- Python is a general purpose high-level programming language
+- Guido Van rossam - 1991 (Feb 20th)
+
+where to use:
+-------------
+We can develop 
+1. Desktop Applications
+2. Web Applications
+3. Database Applications
+4. Network Applications
+5. Gaming applications
+6. Data Analysis
+7. Machine learning 
+8. IOT
+
+* Not a best suit for Mobile applications
+
+Official Website: https://www.python.org/
+
+Features:
+=========
+1. Simple and Easy to learn
+2. Freeware and Open source
+3. High level Programming language
+4. Platform independent
+5. Portability
+6. Dinamically typed
+7. Procedure and Object oriented
+8. Interpreted(line by line execution)* PVM-Python vertual m\c
+9. Extensible
+10. Embeded
+11. Extensive Library
+
+Limitations:
+------------
+- Performance wise Python is not upto the mark
+- not using for Mobile Apps
+
+Flavors of Python:
+-----------------
+Cpython
+Jython or JPython
+IronPython
+PYPy
+RubyPython
+AnacondaPython
+
+Versions:
+----------
+python 1.x -- 1994
+Python 2.x -- 2000
+Python 3.x -- 2008
+
+python 3.12.0 (present)
+
+* what are the main differences between Python2.x and Python3.x ..??
+
+============================================================================
+
+Identifiers:
+============
+- A name in python (it can be a class name, function name, variable name, module name)
+
+Rules:
+------
+1. chars allowed
+	- alphabets(lower, or upper)
+	- digits(0-9)
+	- underscore (_) (not other symbols like %, @, $ ....)
+	Ex: a = 55
+	    b1 = 123
+	    name = "rohit"
+	    Name_1 = 'rakesh'
+	    NAME = 'ss'
+	    _a = 55
+	    __b = 70
+	- $ is not allowed
+ 	   Ex: ca$h = 500 	
+2. Doesn't starts with a number
+	Ex: 123a = 55 (not allowed)
+3. Indentifiers are case sensitive.
+	Ex: a = 100
+	    A = 200
+	* Both a and A are not same.
+4. we can't use keywords as identifier.
+	Ex: if = 200 (not valid)
+	    def = 'python' (not valid)
+
+Reserved or Key words:
+======================
+
+- Keyword has special meanining in Python
+
+>>> import keyword
+>>> keyword.kwlist
+['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
+
+['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
+
+
+
+Data Types:
+===========
+- Type of data present inside a variable
+- for ex: a = 10 (integer type of data)
+
+List of data types:
+-------------------
+1. Integer (int)
+2. Float(float)
+3. Complex (complex)
+4. Booleon (bool)
+5. String (str) - 30 min
+6. Bytes
+7. Bytearray
+8. Range (range) - 10min
+9. List (list)	- 30min
+10. Tuple (tuple) - 15min
+11. Set (set)	- 20min
+12. Frozenset
+13. Dictionary (dict) - 30min
+14. None
+
+*1,2,4,5,8,9,10,11,13,14
+
+- we can see the data using print() function
+- We can check the type of data inside a variable using type() function
+- We can see the address of a variable using id() function
+
+
+Ex: 
+>>> a = 10
+>>> print(a)
+10
+>>> type(a)
+<class 'int'>
+>>> id(a)
+140711982658632
+>>>
+
+* print(), type(), id() are in-built functions
+
+
+1). Interger type:
+------------------
+
+- Decimal form (0 - 9)
+- Bianry form (0,1)
+- Octal form (0-7)
+- Hexa decimal form (0-9, A, B, C, D, E, F)
+
+Ex: 
+>>> a = 100
+>>> bin(a)
+'0b1100100'
+>>> oct(a)
+'0o144'
+>>> hex(a)
+'0x64'
+
+
+2). Float:
+----------
+- floating point numbers
+- Ex: a = 10.5
+	type(a)
+
+
+complex:
+--------
+
+- complex form: a+bj
+Ex:
+>>> a = 10+5j
+>>> a.real
+10.0
+>>> a.imag
+5.0
+>>> a
+(10+5j)
+
+
+Boolean:
+-------
+- True or Flase
+Ex: 
+>>> a = True
+>>> type(a)
+<class 'bool'>
+>>>
+
+
+String:
+------
+- Sequence of characters enclosed within single quotes(') or double quotes(").
+- str data type
+
+Ex: 
+name = "python"
+
+- multi-line string is represented using triple single quotes(') or triple double quotes(").
+Ex: 
+line = '''Python is 
+	    very easy'''
+line1 = """python is
+           interpreted"""
+
+
+
+- string supports indexing and slicing
+
+- Index: position of a character (foward indexing: 0,1,2,3,4, Backward-indexing: -5,-4,-3,-2,-1)
+- Slicing: peice of characters. [start:end:step]
+	default start value is 0 or first element
+	default end value is -1 or last element
+	default step value is 1
+
+- String concatenation, multiplication
+Ex:
+>>> s = "python"
+>>> s1 = "java"
+>>> s + s1
+'pythonjava'
+>>> s*3
+'pythonpythonpython'
+>>> s1*2
+'javajava'
+>>>
+
+
+Type casting:
+------------
+- Data type conversion
+
+int()
+float()
+complex()
+bool()
+str()
+------------
+
+range(n)
+list()
+tuple()
+set()
+dict()
+
+
+
+=============================================================================
+
+Range:
+-----
+Sequence of numbers.
+Ex: a = range(5) # o/p: 0,1,2,3,4
+
+List:
+-----
+- An ordered collection of elements, whether it may be homogeneous or heterogeneous, enclosed within square brackets([]), seperated with comma(,) where     duplicates are allowed.
+- supports indexing(position) and slicing(piece).
+- Modifications allowed(Mutable)
+- Empty list 
+	ex: l = [] or l = list()
+
+Ex:
+l1 = [10,20,30,30,20,40,50] 		  # Homo
+l2 = [10,30.5,'python']   # Hetero
+
+
+Tuple:
+------
+- An ordered collection of elements, whether it may be homogeneous or heterogeneous, enclosed within paranthesis, seperated with comma(,) where duplicates are allowed.
+- It allows duplicates.
+- supports indexing(position) and slicing(piece).
+- Modifications not allowed(Immutable)
+- Empty tuple 
+	ex: t = () or t = tuple()
+
+Ex:
+t = (1,3,6,6,3,7,9, 'python', 10.5)
+
+>>> del t[4]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'tuple' object doesn't support item deletion
+>>>
+
+
+Set:
+---
+- An unordered collection of elements, whether it may be homogeneous or heterogeneous, enclosed within curly brackets({}), seperated with comma(,) where duplicates are not allowed.
+- It does not allow duplicates.
+- Doesn't supports indexing(position) and slicing(piece).
+- Modifications allowed(Mutable)
+
+- Empty set 
+	ex: s = set()
+
+Ex: s = {1,2,3,"python", 'a', 20.5}
+
+>>> s = {1,2,3,"python", 'a', 20.5}
+>>>
+>>>
+>>> s
+{1, 2, 3, 20.5, 'a', 'python'}
+>>>
+>>> s
+{1, 2, 3, 20.5, 'a', 'python'}
+>>> s.remove(3)
+>>> s
+{1, 2, 20.5, 'a', 'python'}
+>>>
+
+Dictionary:
+----------
+- If we want represent elements in key, value manner, then we should go for dict.
+- key:value
+- Enclosed within curly braces({})
+- keys does not allow duplicates
+- Values can be duplicates
+- Modifications allowed(Mutable)
+- No concept of indexing and slicing, becouse values can be accessed using keys.
+
+
+Ex: d = {1: "a", 2:'b', 3:'c'}
+
+- empty dict
+ex: d = {}
+(or)
+d1 = dict()
+
+======================================================================================================
+======================================================================================================
+
+Escape Characters:
+------------------
+- In Strings, we can escape characters to associate special meaning.
+
+
+Ex:
+print("Hello \tworld") # Tab space
+print("Hello \nworld")  # Newline
+
+\r
+\b
+\f
+\v
+\'
+\"
+\\
+
+
+Operators:
+----------
+
+1. Arithmetic
+
+	Addition(+)
+	Substraction(-)
+	Division(/)
+	Multiplication(*)
+	Modulo division(%) # Catches the reminder
+	Floor division(//) # doesn't consider after decimal point
+	Exponent(**) 	 # powers the value
+Ex: 
+>>> a = 20
+>>> b = 6
+>>> a+b
+26
+>>> a-b
+14
+>>> a*b
+120
+>>> a/b
+3.3333333333333335
+>>> a%b
+2
+>>> a//b
+3
+>>> a/b
+3.3333333333333335
+>>> c = 3
+>>> d = 5
+>>> d**c
+125
+>>>
+
+
+
+2. Relational Operators: >, <, >=, <=
+- Returns the result in bool format (i.e True or False)
+
+- Ex:
+>>> a = 10
+>>> b = 20
+>>> a>b
+False
+>>>
+>>> a<b
+True
+>>> c = 20
+>>> b<=c
+True
+>>> a <= c
+True
+>>>
+>>> a>=c
+False
+>>>
+
+>>> a = 10+20j
+>>> b = 5+30j
+>>> a>b
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: '>' not supported between instances of 'complex' and 'complex'
+>>>
+
+3. Logical Operators: and, or, not
+Ex:
+>>> a = True
+>>> b = False
+>>> a and b
+False
+>>>
+>>> a or b
+True
+>>> not a
+False
+>>> not b
+True
+>>> a = 1
+>>> b = 0
+>>> a and b
+0
+>>> a or b
+1
+>>> not a
+False
+>>> not b
+True
+>>> a = 3
+>>> b = 4
+>>> a and b
+4
+>>> a or b
+3
+>>> not a
+False
+>>> a = "python"
+>>> b = "java"
+>>> a and b
+'java'
+>>> a or b
+'python'
+>>> not a
+False
+>>>
+
+
+4. Bitwise Operators: |, &, ^, ~, >>, <<
+
+
+5. Assignment Operators: =, +=, -=, /=, *=
+
+
+6. Special operators:
+	a. Identity Operators: is, is not
+	b. Membership Operators: in, not in
+
+ex:
+>>> a = 100
+>>> b = 200
+>>> a is b
+False
+>>> a is not b
+True
+>>> a = "python"
+>>> 'p' in a
+True
+>>> 'P' in a
+False
+>>> 'p' not in a
+False
+>>>
+
+Operator precedence:
+-------------------
+()
+**
+*,/,%,//
++,-
+<<,>>
+&
+^
+|
+>,>+,<,<=, ==, !=
+is, is not
+in, not in
+not
+and
+or
+
+
+*Note:
+is compares two objects based on address location
+== comapres two objects based on value
+
+
+====================================================================
+
+Input and Output statements:
+----------------------------
+Ex:
+a = int(input("enter your input for a: "))
+b = int(input("enter your input for a: "))
+print(a+b)	# Output statement
+
+name = input("Enter your name: ")
+print(name)
+
+eval():
+takes string as an argument and evalutes the result
+>>> eval('10+20+40')
+70
+>>>
+
+>>> print('a value is : ', a)
+a value is :  256
+>>> print('a value is : ', a, b)
+a value is :  256 256
+>>> print('a value is {0} b is {1}: '.format(a,b))
+a value is 256 b is 256:
+>>> print('a value is {0}, b is {1} '.format(a,b))
+a value is 256, b is 256
+>>>
+
+Command line arguments:
+-----------------------
+- Arguments which are passing at the time of program execution.
+- we need to import argv module from sys module
+
+
+Ex: input_output_stmts.py 100 2000
+from sys import argv
+print(type(argv))
+print(argv) #['input_output_stmts.py', '100', '2000']
+
+Conditional statements: if, else, elif
+-----------------------
+- Structure
+if condition:
+	------
+	------
+elif condition2:
+	-------
+	-------
+else:
+	------
+	------
+
+
+a = 10
+b = 20
+
+b>a - b is big
+a>b - a is big
+
+if a is greater than b, then print a is big, otherwise print b is big. ## 
+
+- if
+- a>b then a is big
+- else b is big
+
+if condition: 
+	a is big
+else:
+	b is big
+
+
+Ex1:
+percent = int(input("Enter your marks percentage: "))
+if percent >= 70:
+    print('your are eligible for this position')
+else:
+    print('Not eligible')
+
+Ex2:
+s = "java,python are coding langs"
+if 'python' in s:
+    print('python found')
+elif 'java' in s:
+    print('java found')
+else:
+    print("not found")
+
+Possible ways to define conditional stmts:
+- if... (only if)
+- if...else...
+- if...elif...else...
+- if...elif...
+- if inside if...or else...
+- if...else... inside if...or else...
+
+
+---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+Requirement: (Problem statement)
+================================
+inputs:
+1. job_type
+	a. sub-jobtype(in private)
+2. sal
+
+Person
+Job type (Gov or private)
+	Gov --> got a match
+		Private: either software or other
+			a. software sal>1,00,000  --> got a match otherwise--> didn't get
+			b. other 	sal>50,000 --> got a match otherwise --> didn't get
+else---> didn't get
+		- Re-check your job either job/no_job
+		- if job--> re-run
+		- no_job --> no match
+
+
+Ex:
+===
+job = input("enter your job type (gov/pvt/None): ")
+if job == 'gov':
+    print("you will get married.")
+elif job == 'pvt':
+    sub_type = input("enter your sub job type (software/other):")
+    sal = int(input("enter your salary: "))
+    if sub_type == 'software':
+        if sal > 100000:
+            print("you will get married.")
+        else:
+            print("You won't get a match")
+    else:
+        if sal > 120000:
+            print("you will get married.")
+        else:
+            print("You won't get a match")
+else:
+    if job == "":
+        re_check = input("please enter job_type (job/no_job): ")
+        if re_check == 'job':
+            print("Re-run your program again.")
+        else:
+            print("You won't get a match.")
+    else:
+        print("You won't get a match. final stmt")
+
+Dev - testing
+
+==============================================
+
+Itereative statements: for, while
+--------------------------------------------------
+- If we want execute a group of stmts multiple times, we can use iterative stmts
+- for loop
+- while loop
+
+for loop:
+---------
+- perform an action on each element in a string or any collection.
+syntax:
+	for x in sequence:
+		body
+
+Ex:
+name = "python"
+for x in name:
+		print(x)
+l = [10,20,30,40]
+for i in l:
+	print(i+5)
+
+Ex: printing characters in a string(reversed) with -ve index
+for i in range(len(name)):
+	print(str(-1-i)+" is "+name[-1-i])
+
+while loop:
+-----------
+- perform an action until certain condition fails
+Syntax:
+	while condn:
+		body
+
+Ex: 
+i = 0
+while i<5:
+	print("hello")
+	i = i+1
+
+
+break: It break the statement in a loop of execution
+Ex: 
+for i in range(10):
+	if i == 5:
+		break
+	print(i)
+
+o/p: prints 0 to 4
+
+
+
+
+continue: skip the iteration when a condition satisfies.
+
+Task1:
+------
+3 divisibles: 0,3,6,9,12,15,18,21,24,27,30   -- mickey
+5 divisibles: 0,5,10,15,20,25,30       	   -- mouce
+
+3-div and 5-div 	--> mickey mouce
+
+
+
+0 mickey mouce
+3 mickey
+5 mouce
+.
+.
+.
+.
+.
+15 mickey mouce
+
+Ans:
+----
+for i in range(31):
+	if i%3==0 and i%5==0:
+		print("mickey mouce", i)
+	elif i%3==0:
+			print("micky", i)
+	elif i%5==0:
+			print("mouce", i)
+print("----------------------")
+
+
+
+=========================================================
+
+Strings:
+========
+- sequence of characters enclosed within either single quotes or double quotes.
+Ex:
+name = "python"
+name = 'python'
+
+- How to access chars of a string..?? by
+	a. using index
+	b. using slice operator
+
+
+[start:end:step]
+
+- reverse a string
+Ex:
+>>> n = 'hello python students'
+>>> n[::-1]
+'stneduts nohtyp olleh'
+
+Ex1:
+>>> n
+'hello python students'
+>>> n + "how are you"
+'hello python studentshow are you'
+>>> n + " how are you"
+'hello python students how are you'
+>>> n + 20
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: can only concatenate str (not "int") to str
+>>> n + str(20)
+'hello python students20'
+>>> n
+'hello python students'
+>>> n*2
+'hello python studentshello python students'
+>>>
+
+- Useful string functions:
+--------------------------
+1. len(): To find number of chars in a string
+Ex:
+>>> n
+'hello python students'
+>>> len(n)
+21
+>>>
+
+2. Removing white spaces in a string.
+	- lstrip(): removes left side white spaces
+	- rstrip(): removes right side white spaces
+	- strip() : removes both left and right side white spaces
+
+Ex: 
+>>> n = " hello "
+>>> n.lstrip()
+'hello '
+>>> n
+' hello '
+>>> n.rstrip()
+' hello'
+>>> n.strip()
+'hello'
+>>>
+
+3. Finding sub-string:
+	a. find(): returns the first occurance of the given string, if not available we will get -1
+	b. index(): returns the first occurance of the given string, if not found we will get "ValueError".(index() is same as find())
+
+
+Ex1:
+>>> n = 'hello python students'
+>>> n
+'hello python students'
+>>> n.find('python')
+6
+>>> n.find('Python')
+-1
+
+
+Ex2:
+>>> n.index('p')
+6
+>>> n
+'hello python students'
+>>> n[6]
+'p'
+>>> n.index('p')
+6
+>>> n.index('l')
+2
+>>> n.index('L')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: substring not found
+>>> n.index('Python')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: substring not found
+>>>
+
+4. count(): finfd the number of occurances of a sub-string
+>>> n
+'hello python students'
+>>> n.count('l')
+2
+>>> n.count(' ')
+2
+>>> n.count('s')
+2
+>>> n.count('d')
+1
+>>> n.count('hello')
+1
+>>> n.count('hello')
+
+5. Splitting of strings:
+	- split(): acc. to specified seperator we can split the string
+	- returns output in list type
+
+Ex1:
+>>> n
+'hello python students'
+>>> n.split(" ")
+['hello', 'python', 'students']
+>>>
+
+Ex2:
+>>> name = "11-04-2023"
+>>> date = "11-04-2023"
+>>> date.split("-")
+['11', '04', '2023']
+>>>
+
+6. replace():
+syntax: name.replace(old, new)
+Ex:
+>>> date
+'11-04-2023'
+>>> date.replace('-', '/')
+'11/04/2023'
+>>>
+
+7. Joining of strings:
+---------------------
+- Joining group of elements in a collection(List or tuple).
+syntax: seperator.join(group of strings)
+
+Ex:
+>>> l = ['11', '04', '2023']
+>>> l
+['11', '04', '2023']
+>>> '-'.join(l)
+'11-04-2023'
+>>> '/'.join(l)
+'11/04/2023'
+>>>
+
+* if we split a string using split(), output will be in list type
+* if we join list or tuple string type elements using .join(), output will be in string type.
+
+8. Changing case of a string:
+Ex:
+>>> s = "Python iS VerY eaSY"
+>>> s
+'Python iS VerY eaSY'
+>>> s.lower()
+'python is very easy'
+>>> s.upper()
+'PYTHON IS VERY EASY'
+>>> s.swapcase()
+'pYTHON Is vERy EAsy'
+>>> s
+'Python iS VerY eaSY'
+>>> s.title()
+'Python Is Very Easy'
+>>> s.capitalize()
+'Python is very easy'
+>>>
+>>>
+
+
+9. To check Type of Characters present in a string:
+Ex:
+>>> s1="python's code is #0012"
+>>> s1
+"python's code is #0012"
+>>> s1.isalnum()
+False
+>>> s2 = 'python123'
+>>> s2.isalnum()
+True
+>>> s3 = "Python"
+>>> s3.isalnum()
+True
+>>> s3 = "123"
+>>> s3.isalnum()
+True
+>>> s2 = 'python123'
+>>> s2.isalpha()
+False
+>>> s2 = 'python'
+>>> s2.isalpha()
+True
+>>> s4 = "1234"
+>>> s4.isdigit()
+True
+>>> s4.isdigits()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'str' object has no attribute 'isdigits'. Did you mean: 'isdigit'?
+>>> s4.isdigit()
+True
+>>> s
+'Python iS VerY eaSY'
+>>> s.islower()
+False
+>>> s1
+"python's code is #0012"
+>>> s1.islower()
+True
+>>> s5 = "PYTON"
+>>> s5.isupper()
+True
+>>> s1.isupper()
+False
+>>> s1
+"python's code is #0012"
+>>> s
+'Python iS VerY eaSY'
+>>> s.istitle()
+False
+>>> s6=s.title()
+>>> s6
+'Python Is Very Easy'
+>>> s6.istitle()
+True
+>>> s
+'Python iS VerY eaSY'
+>>> s.isspace()
+False
+>>> s7 = " "
+>>> s7.isspace()
+True
+>>> s
+'Python iS VerY eaSY'
+>>> s
+'Python iS VerY eaSY'
+>>> if s.isgigit():
+...    print("number are there")
+... else:
+...    print('do someting')
+...
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'str' object has no attribute 'isgigit'. Did you mean: 'isdigit'?
+>>> if s.isdigit():
+...    print("number are there")
+... else:
+...    print('do someting')
+...
+do someting
+>>>
+
+10. Formatting strings:
+Ex:
+name = "python"
+sub_code = "001"
+print("subject code {} is {}".format(sub_code, name))
+print("subject code {0} is {1}".format(sub_code, name))
+print("subject code {a} is {b}".format(a=sub_code, b=name))
+print(f"subject code {sub_code} is {name}")
+# subject code 001 is Python
+
+
+
+List:
+======
+-----
+- An ordered collection of elements, whether it may be homogeneous or heterogeneous, enclosed within square brackets([]), seperated with comma(,) where     duplicates are allowed.
+- supports indexing(position) and slicing(piece).
+- Modifications allowed(Mutable)
+- Empty list 
+	ex: l = [] or l = list()
+
+Ex: l = [10,30,40,50]
+    l1 = [10,20,30.5,"python", "java"]
+
+Creation of list objects:
+------------------------
+Ex:
+>>> l1 = list()
+>>> l1
+[]
+>>> l=[]
+>>> l
+[]
+>>>
+
+
+1. len(): To find number of elements in a list
+Ex: 
+>>> l
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> len(l)
+10
+
+
+2. count(): returns the no. of occurances of a specified element in a list.
+
+3. index(): returns the first occurance of a specified element in a list
+
+List manipulation:
+------------------
+- append(): add new elements into a list. (in end of a list)
+- insert(): add specified element in a specified location
+- extend(): add group of elements into a list.(in the end of a list)
+- remove(): remove specified element in a list, if it present multiple times removes first occurances only.
+- pop(): removes and return last element of a list
+- pop(index): removes and return specified indexed element of a list
+Ex:
+>>> l = [20,30,40,30,20,10]
+>>> print(l)
+[20, 30, 40, 30, 20, 10]
+>>> l.append(400)>>> print(l)
+[20, 30, 40, 30, 20, 10, 400]
+>>> l
+[20, 30, 40, 30, 20, 10, 400]
+>>> l.append(500)>>> l
+[20, 30, 40, 30, 20, 10, 400, 500]
+>>> l.insert(700,3)>>> l
+[20, 30, 40, 30, 20, 10, 400, 500, 3]
+>>> l.insert(3,700)>>> l
+[20, 30, 40, 700, 30, 20, 10, 400, 500, 3]
+>>> l.extend(50,60,70)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: list.extend() takes exactly one argument (3 given)
+>>> l.extend([50,60,70])>>> l
+[20, 30, 40, 700, 30, 20, 10, 400, 500, 3, 50, 60, 70]
+>>> l.extend((50,60,70))>>> l
+[20, 30, 40, 700, 30, 20, 10, 400, 500, 3, 50, 60, 70, 50, 60, 70]
+>>> l.extend({50,60,70})
+>>> l
+[20, 30, 40, 700, 30, 20, 10, 400, 500, 3, 50, 60, 70, 50, 60, 70, 50, 60, 70]
+>>> l.remove(40)>>> l
+[20, 30, 700, 30, 20, 10, 400, 500, 3, 50, 60, 70, 50, 60, 70, 50, 60, 70]
+>>> l.remove(20)
+>>> l
+[30, 700, 30, 20, 10, 400, 500, 3, 50, 60, 70, 50, 60, 70, 50, 60, 70]
+>>> del l[3]
+>>> l
+[30, 700, 30, 10, 400, 500, 3, 50, 60, 70, 50, 60, 70, 50, 60, 70]
+>>> for i in l:
+...     if i == 30:
+...             l.remove(i)
+...
+>>> l
+[700, 10, 400, 500, 3, 50, 60, 70, 50, 60, 70, 50, 60, 70]
+>>> l.pop()
+70
+>>> l
+[700, 10, 400, 500, 3, 50, 60, 70, 50, 60, 70, 50, 60]
+>>> l.pop()
+60
+>>> l
+[700, 10, 400, 500, 3, 50, 60, 70, 50, 60, 70, 50]
+>>> l.pop(5)
+50
+>>> l
+[700, 10, 400, 500, 3, 60, 70, 50, 60, 70, 50]
+>>> 
+
+Ordering elements of list:
+--------------------------
+
+- reverse()
+- sort()
+
+
+
+
+Ex: Calculate sum of diagonal elements in a matrix
+
+l = [[0,1,2],[3,4,5],[6,7,8]]
+# for i in l:
+#     print(i)
+#     for j in i:
+#         print(j)n=len(l)
+sum = 0
+for i in range(n):
+    #print(l[i])
+    for j in range(n):
+        #print(l[i][j])
+        if i == j or i+j == 2:
+            sum = sum + l[i][j]
+            print("diag elem : ",l[i][j])
+print(sum)
+
+
+
+
+List Comprehension:
+===================
+It is easy and compact way of creating a list from an iterable object(tuple, list, range,dictionary, etc.).
+
+Syntax:
+l = [expression for item in iterable_obj if condition]
+Ex:
+l1 = [i**2 for i in range(10) if i%2==0]
+
+
+Tuple:
+======
+- An ordered collection of elements, whether it may be homogeneous or heterogeneous, enclosed within paranthesis (i.e ()), seperated with comma(,) where     duplicates are allowed.
+- Supports indexing(position) and slicing(piece).
+- Modifications not allowed(Immutable)
+- Empty tuple 
+	ex: t = () or t = tuple()
+
+- Creating single valued tuple.
+Ex:
+>>> t = (99,)
+>>> t
+(99,)
+>>> type(t)
+<class 'tuple'>
+>>>
+
+## Not a tuple(below ex)
+>>> t = (99)
+>>> t
+99
+>>> type(t)
+<class 'int'>
+
+*Int.Q) What are the difference b/w List and Tuple..??
+
+- In lists, l.sort() reflects on original list, but in sorted(l) doesn't reflect on original list.
+
+Ex:
+>>> l
+[10, 20, 30]
+>>> min(l)
+10
+>>> max(l)
+30
+>>> t
+(200, 10, 400)
+>>> min(t)
+10
+>>> max(t)
+400
+>>>
+sorted(): sort the elements in a tuple, and returns a new list.
+>>> a = sorted(t, reverse=True)
+>>> a
+[400, 200, 10]
+>>>
+
+Tuple Comprehension:
+===================
+It is easy and compact way of creating a tuple from an iterable object(tuple, list, range,dictionary, etc.).
+
+Syntax:
+t = (expression for item in iterable_obj if condition)
+
+
+
+Set:
+----
+- An unordered collection of elements, whether it may be homogeneous or heterogeneous, enclosed within curly brackets (i.e {}), seperated with comma(,) where duplicates are not allowed.
+- Doesn't supports indexing(position) and slicing(piece).
+- Modifications allowed(Mutable)
+- Duplicate elements are not allowed.
+- Empty set 
+	ex: s = set()
+
+Ex1:
+>>> s = {10,20,30,"py", 30.5,10,20}
+>>> s
+{20, 'py', 30, 10, 30.5}
+>>> s = {}
+>>> type(s)
+<class 'dict'>
+>>> s = {,}
+  File "<stdin>", line 1
+    s = {,}
+         ^
+SyntaxError: invalid syntax
+>>> s = {10}
+>>> type(s)
+<class 'set'>
+>>> s
+{10}
+>>> s = {}
+>>> s = set()
+>>> type(s)
+<class 'set'>
+>>>
+>>>
+>>> s = {100}
+>>> type(s)
+<class 'set'>
+>>> s = {100,}
+>>> s
+{100}
+>>>
+>>> s
+{100}
+>>> l
+[10, 20, 30]
+>>> s = set(l)
+>>> s
+{10, 20, 30}
+
+Ex2:
+>>> s = {10,30,50}
+>>> s
+{10, 50, 30}
+>>> s.add(100)
+>>> s
+{100, 10, 50, 30}
+>>> s.update((10,30,40))
+>>> s
+{100, 40, 10, 50, 30}
+>>> s.update(10,30,40)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'int' object is not iterable
+>>> s.update((100,300,400))
+>>> s
+{100, 40, 10, 300, 400, 50, 30}
+>>> s.extend((1,2,3))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'set' object has no attribute 'extend'
+>>>
+
+
+EX: union(), intersection(), difference(), symmetric_difference()
+>>> s = {1,2,3,4}
+>>> s1 = {3,4,5,6,7}
+>>> s.union(s1)
+{1, 2, 3, 4, 5, 6, 7}
+>>> s.intersection(s1)
+{3, 4}
+>>> s.difference(s1)
+{1, 2}
+>>> s1.difference(s)
+{5, 6, 7}
+>>> s.symmetric_difference()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: set.symmetric_difference() takes exactly one argument (0 given)
+>>> s.symmetric_difference(s1)
+{1, 2, 5, 6, 7}
+>>> s
+{1, 2, 3, 4}
+>>> s1
+{3, 4, 5, 6, 7}
+>>>
+
+Set Comprehension:
+
+====================================================
+
+Dictionaries:
+============
+key:value
+- If we want to represent group of elements in a key-value pair, then we should go for dictionary.
+For ex: customer_details
+cid : 114
+cname : "Rahul"
+csal : 30000.0
+dept : "Dev"
+
+- Duplicate keys are not allowed, but values can be duplicate.
+- Heterogenous objects are allowed, for both keys and values.
+- Insertion order is not preserved.
+- Modifications are allowed(Mutable). (add, delete, update)
+- Indexing and Slicing is not applicable.
+
+Creation of a dict:
+-------------------
+- Empty dict
+	d = {} or d = dict()
+- d = {'cid' : 114, 'cname' : "Rahul", 'csal' : 30000.0, 'dept' : "Dev"}
+
+- List and set cann't be given as keys, where as tuple can be acceptable.
+Ex:
+>>> d1 = {1:100, 'a': 200, 'name': 'python', 10.5: 'hi', True:'one', [1,2,3]: "list_elements"}
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'list'
+
+>>> d1 = {1:100, 'a': 200, 'name': 'python', 10.5: 'hi', True:'one', (1,2,3): "tuple_elements"}
+>>> d1
+{1: 'one', 'a': 200, 'name': 'python', 10.5: 'hi', (1, 2, 3): 'tuple_elements'}
+>>> d1[(1, 2, 3)]
+'tuple_elements'
+
+>>> d1 = {1:100, 'a': 200, 'name': 'python', 10.5: 'hi', True:'one', {1,2,3}: "set_elements"}
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'set'
+>>>
+
+
+Ex:
+- len(): Get no. of entries(length)
+>>> len(d)
+7
+>>> d
+{1: 'a', 2: 'b', 'A': 'py', 3: 120, 4: [100, 2000, 300, 10, 30, 40], 5: {56, 34}, 'name': 'Rohit'}
+- get(key): get value of a key in dict
+>>> d.get(5)
+{56, 34}
+>>>
+
+- get(key, default)
+>>> d.get(5)
+{56, 34}
+>>> d.get(5, 'Nothing')
+{56, 34}
+>>> d.get(10, 'Nothing')
+'Nothing'
+>>>
+
+>>> d.pop()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: pop expected at least 1 argument, got 0
+>>> d.pop(2)
+'b'
+>>> d
+{1: 'a', 'A': 'py', 3: 120, 4: [100, 2000, 300, 10, 30, 40], 5: {56, 34}, 'name': 'Rohit'}
+>>> d.popitem()
+('name', 'Rohit')
+>>>
+
+Dictionary coprehension:
+------------------------
+- syntax:
+	d = {item: expresion for item in collection if condition}
+Ex:
+>>> d1 = {i:i**3 for i in range(10) if i%2==0}
+>>> d1
+{0: 0, 2: 8, 4: 64, 6: 216, 8: 512}
+>>> type(d1)
+<class 'dict'>
+>>>
+
+
+Possible ways to define collections:
+-- List of int, tuple, set, str, dictionaries
+-- dictionaries of list, tuple, set, str, int, etc...
+-- list of dicts of list
+-- list of dicts of tuple of dict
+
+* Important: working with JSON formatted data using python dictionaries
+JSON: Java Script Object Notation
+
+Ex:
+
+d = {
+    "name": "Morpheus",
+    "job": "Leader",
+    "id": "199",
+    "createdAt": "2020-02-20T11:00:28.107Z",
+    "contactdetails": {"phone":"8439743294793",
+                       "email" : "test@abc.com"
+                       }
+    }
+
+print(d)
+print(type(d))
+print(d["contactdetails"])
+print(type(d["contactdetails"]))
+print(d["contactdetails"]["email"])
+----------------------------------------------
+
+Task: Get no. of occurances of each character in a string
+sample input:
+s = 'hello'
+
+sample output:
+{'h':1, 'e':1, 'l':2, 'o':1}
+
+===================================================================================
+===================================================================================
+
+Functions:
+----------
+- If a group of statements are repeatedly required, then it is not recommended to write the same lines again and again. 
+- We have define these group of statements as a single unit.
+- Then we can call that unit any number of times.
+- This unit is what we called is a "Function".
+
+- Main advantage of functions is code-reusability.
+
+- Python supports '2' types of functions.
+	1. Built-in functions
+		a. id()
+		b. print()
+		c. type()
+		d. input()
+		e. eval() ... etc.
+
+	2. User-defined functions
+
+
+
+User-defined functions:
+-----------------------
+- Functions which are developed by programmer explicitly acc. to the business requirement.
+- Syntax:
+	def fun_name(parameters):
+		''' doc string '''
+		----
+		----
+		----
+		return value
+
+- def is mandatory
+- return is optional
+- parameters also optional
+- parameters are inputs to the functions.
+
+
+Parameters:
+-----------
+- Inputs to the function
+- if function contains parameters, then we must provide values to that function while calling, otherwise we will get error.
+- 
+
+Return statement:
+----------------
+- Function can take input values as parameters and execute business logic, and returns the output to the caller function with return statement. 
+- Ex:
+# add two number and return the sum using functions
+def add_two_nums(a, b):
+    c = a + b
+    return c
+
+result = add_two_nums(10, 20)
+print("add of 2 nums: ", result)
+
+return multiple values from a function:
+--------------------------------------
+- Function can return any number of values.
+- return multiple values seperated with comma(,)
+
+Ex:
+ add and sub two number and return the results using functions
+def add_sub_two_nums(a, b):	# calling function, defining
+    c = a + b
+    d = a - b
+    return c, d
+
+result_add, result_sub = add_sub_two_nums(10, 20)	# caller function
+print("add of 2 nums: ", result_add)
+print("sub of 2 nums: ", result_sub)
+
+
+* In the above example,
+	- a,b are called formal arguments
+	- 10, 20 are called actual arguments
+
+* In python, everything is an object.
+
+Types of Arguments:
+===================
+- There are 4 types of actual arguments are allowed in python.
+	 1) Positional Arguments
+	 2) Keyword Arguments
+	 3) Default Arguments
+	 4) Variable length Arguments
+	 5) Variable length Keyword Arguments
+
+1) Positional Arguments:
+-----------------------
+- Parameters are passed to function in correct order.
+Ex: 
+def add_sub_two_nums(a, b):
+    return a + b, a - b
+
+result_add, result_sub = add_sub_two_nums(10, 30) 
+result_add1, result_sub1 = add_sub_two_nums(30, 10)
+
+
+- The no. of args and position of args must be matched. 
+- If we change the order, then result may be changed.
+- If we change the no. of args then we will get error.(TypeError)
+
+2) Keyword Arguments:
+---------------------
+- Passing values by keyword i.e by parameter name.
+Ex:
+# add and sub two number and return the results using functions
+def add_sub_two_nums(a, b):
+    return a + b, a - b
+
+result_add, result_sub = add_sub_two_nums(b=40, a=10)
+result_add1, result_sub1 = add_sub_two_nums(a=10, b=40)
+print("add of 2 nums: ", result_add)
+print("sub of 2 nums: ", result_sub)
+
+result_add, result_sub = add_sub_two_nums(a= 10, 40) ## SyntaxError: positional argument follows keyword argument
+result_add, result_sub = add_sub_two_nums(10, b=40) ## Executes: we can give both positional and keyword args simultaneously.
+
+* Note: We can give both positional and keyword args simultaneously, but first we need to take positional args and then keyword args, otherwise we will get error.
+
+
+3) Default Arguments:
+---------------------
+- Sometimes we can provide default values for our positional args.
+Ex: add and sub two number and return the results using functions
+def add_sub_two_nums(a, b=10):
+    return a + b, a - b
+
+result_add, result_sub = add_sub_two_nums(20, 30) ## Possible
+result_add1, result_sub1 = add_sub_two_nums(20, b=30) ## Possible
+result_add2, result_sub2 = add_sub_two_nums(a=20, b=30) ## Possible
+result_add3, result_sub3 = add_sub_two_nums(a=20, 30)  ## Not possible
+result_add4, result_sub4 = add_sub_two_nums(20) ## Possible. a=20, b=5
+result_add5, result_sub5 = add_sub_two_nums(b=20) ## Not posible. TypeError: add_sub_two_nums() missing 1 required positional argument: 'a'
+result_add6, result_sub6 = add_sub_two_nums()  ## Not possible. TypeError: add_sub_two_nums() missing 1 required positional argument: 'a'
+print("add of 2 nums: ", result_add)
+print("sub of 2 nums: ", result_sub)
+
+Ex1: Possible
+def add_sub_two_nums(a=20, b=10):
+    return a + b, a - b
+
+Ex2: Not possible. 
+def add_sub_two_nums(a=20, b): ## SyntaxError: non-default argument follows default argument
+    return a + b, a - b
+
+
+- If we are not passing any name then default value will be considered.
+
+* Note: After default args we should not take non-default args. 
+
+
+4) Variable length Arguments:
+-----------------------------
+- Sometimes we can pass variable no. of args to our function, such type of args we are called variable length arguments.
+- We can declare a variable length arguments with * symbol as follows.
+- def f1(*n):
+- We can call this function by passing any no. of args including zero number.
+- Internally all these values represent in the form of tuple.
+
+Ex:
+def sum_elements(*a):
+    print(a)
+    print(type(a))
+    sum = 0
+    for i in a:
+        sum = sum + i
+    print("sum is : ", sum)
+
+
+sum_elements(10, 20, 30, 40) ## Possible
+sum_elements() ## Possible too.
+
+Ex1:
+def sum_elements(b,c=20, *a):
+    print(b)
+    print(a)
+    print(type(a))
+    sum = 0
+    for i in a:
+        sum = sum + i
+    print("sum is : ", sum)
+
+
+sum_elements(10, 30) # Possible
+sum_elements(10)  # Possible
+sum_elements()  ## Not possible
+
+Ex2:
+def sum_elements(b, *a, c=20):
+    print(b)
+    print(a)
+    print(type(a))
+    sum = 0
+    for i in a:
+        sum = sum + i
+    print("sum is : ", sum)
+
+
+sum_elements(10, 200,300, c=100)
+
+* Note: We can mix variable length args with positional args, keyword and default args as well.
+
+5) Variable length Keyword Arguments:
+-------------------------------------
+- We can define variable length keyword args by using '**' symbol, as follows.
+- def f1(**n):
+- We can call this function by passing any no. of keyword arguments. Internally, these keyword argument will be stored iside a dictionary.
+
+Ex:
+def sum_elements(**a):
+    print(a)  
+    print(type(a))  ## 'a' is Dict type
+
+sum_elements(a1=100, a2=200, b1=400)
+
+
+Case study:
+-----------
+def f(a, b, c=4, d=8):
+	print(a,b,c,d)
+1. f(3,2) # 3 2 4 8
+2. f(10,20,30,40) # 10 20 30 40
+3. f(25, 50, d=100) # 25 50 4 100
+4. f(d=2,a=3,b=4) # 3 4 4 2
+5. f() # Invalid
+	TypeError: f() missing 2 required positional arguments: 'a' and 'b'
+6. f(c=10, d=20, 30, 40) # Invalid
+	SyntaxError: positional argument follows keyword argument
+7. f(4,5, b=6) # Invalid
+	TypeError: f() got multiple values for argument 'b'
+8. f(4, 5, c=5, e=6) # Invalid
+	TypeError: f() got an unexpected keyword argument 'e'
+
+
+
+Note: Function (vs) Module (vs) Library
+1. Function: A group of lines with some name
+2. Module: A group of functions and variables saved to a file
+3. Library: A group of modules
+
+
+Types of Variables:
+-------------------
+- 2 types of variables
+	a. Global variables
+	b. Local variables
+
+a. Global variables:
+--------------------
+- Declared outside the function
+- Can be accessed in all the functions, though out the program.
+
+b. Local variables:
+-------------------
+- Declared inside the function
+- Can be accessed inside that funnction only, we can't access outside the function or in another function.
+
+Ex:
+k = 500 	## Global variable
+def f1(a):
+    a1 = 500 	## Local variable
+    print("a val is: ", a) ## Local 
+    print("a1 val is: ", a1) 
+    print("k is in f1:", k) 
+    
+def f2(b):
+    print("b val is: ", b)
+    print("k is in f2:", k)
+
+f1(100)
+f2(200)
+
+print("k is in outside:", k)
+
+Global keyword:
+----------------
+We can use global keyword for the following 2 purposes,-
+	- To declare global variables inside the function
+	- To make global variable available to the function so that we can perform required modification.
+
+- If a global variable and local variable having same name, then we can access global variable inside the function using: globals()['var_name']
+
+Ex:
+k = 500
+def f1():
+    global a
+    a = 300
+    k = 50
+    print(f"a value is in f1: {a}")
+    print("k is in f1 local scope:", k)
+    print("k is in f1 global scope:", globals()['k'])
+
+def f2():
+    b = 200
+    a = 5
+    print("b val is: ", b)
+    print("k is in f2:", k)
+    print("a is in f2:", a)
+
+f1()
+f2()
+
+print("k is in outside: ", k)
+print("a is in outside: ", a)
+
+O/p:
+a value is in f1: 300
+k is in f1 local scope: 50
+k is in f1 global scope: 500
+b val is:  200
+k is in f2: 500
+a is in f2: 5
+k is in outside:  500
+a is in outside:  300
+
+
+
+Recursive:
+----------
+- A function that calls itself.
+
+Factorial(5)
+= 5xFactorial(4)
+= 5x4xFactorial(3)
+= 5x4x3xFactorial(2)
+= 5x4x3x2xFactorial(1)
+= 5x4x3x2x1xFactorial(0)
+
+
+Factorial(n) = n*Factorial(n-1)
+
+Ex: Factorial of a number
+def Factorial(n):
+    if n == 0:
+        result = 1
+    else:
+        result = n * Factorial(n - 1)
+    return result
+
+
+k = Factorial(5)
+
+print(k)
+
+====================================================================================
+
+Anonymous Functions:
+--------------------
+- Also called as lambda functions
+- Sometimes we can declare a function without any name, such type of nameless functions we can call as 'Anonymous functions' or 'lambda functions'.
+- * Nameless functions
+- Purpose: Just for instant use(one time usage)
+- Single line statements
+
+Normal function:
+----------------
+- normal function can be defined by using 'def' keyword.
+syntax:
+def function_name(params):
+	return expression
+Ex:
+def square_it(n):
+	return n**2
+
+Lambda Functions:
+-----------------
+- we can define by using 'lambda' keyword.
+Syntax:
+lambda argument_list: expression
+Ex:
+lambda n: n*n
+
+Note: By using lambda functions we can write very concise code so that readability of the program will be improved.
+
+Ex: Find biggest of two numbers
+# Noramal function
+def biggest_two_num(a,b):
+	if a>b:
+		result= a
+	else:
+		result= b
+	return result
+
+op=biggest_two_num(20,100)
+print("biggest of two num:",op)
+
+## Lambda function
+s = lambda a,b: a if a>b else b
+print(s(105,20))
+
+
+* Note: Lambda function internally returns expression value and we are not required to write return stmt explicitly.
+* Note: sometimes we can pass function as an argument to another function. In such cases lambda functions are best choice.
+
+
+* We can use lambda functions very commonly with filter(), map(), and reduce() functions, becouse these functions expect function as an argument.
+
+filter():
+---------
+- We can use filter() function to filter values from a given sequence on some condition.
+Syntax: filter(function, sequence)
+
+- [1,2,3,4,5] ==> filter even condition ==> [2,4]
+Ex:
+op = filter(lambda x:x%5==0, [20,30,35,44,12,55])
+
+* Note: In above example, op is a filter type object. It can not be readable. We need to convert it into list type.
+
+Ex1:
+list_ele = [20,30,35,44,12,55]
+op = list(filter(lambda x:x%5==0, list_ele))
+print(op) # [20, 30, 35, 55]
+
+Ex2:
+# filter()
+l = [5, 25, 56, 75, 89]
+
+op = list(filter(lambda i: i % 5 == 0, l))
+print("5 divisible from a given seq: ", op)  ## [5,25,75]
+
+l1 = [1, 2, 3, 4, 5]
+op1 = list(filter(lambda i: i % 2 == 0, l1))
+
+print("Even numbers from given list: ", op1)
+
+
+
+map():
+------
+- For every element present in a given sequence, apply some functionality and generate new element with the required modification.
+Syntax: map(function, sequence)
+
+Ex:
+[1,2,3,6] ==> map functionality(square it) ==> [1,4,9,36]
+
+Syntax: map(function, sequence)
+
+Ex:
+# for every element present in the list, perform double and generate new list of doubles
+l2 = [1, 2, 3, 4, 5]
+# syntax: map(function, sequence)
+
+op_map = list(map(lambda x: x*2, l2))
+print(f"double of a list {l2}: ", op_map)
+
+* Note: In above example, op is a map type object. It can not be readable. We need to convert it into list type.
+
+- The function can be each element of sequence and generates new sequence.
+
+- We can apply map function on multiple lists also. But make sure all list should have same length.
+Ex2:
+>>> l = [1,2,3]
+>>> l1 = [11,12,13]
+>>> op = list(map(lambda a,b: a*b, l,l1))
+>>> op
+[11, 24, 39]
+
+
+
+reduce():
+---------
+- reduce() function reduces sequence of elements into a single element by applying some functionality.
+- Syntax: reduce(function, sequence)
+- reduce() function present in functools module and hence we should write import statement.
+
+Ex: 
+>>> l = [1, 2, 3]
+>>> from functools import reduce
+>>> op = reduce(lambda a,b: a+b, l)
+>>> op
+6
+>>> op = reduce(lambda a,b: a*b, l)
+>>>
+>>> op
+6
+
+
+
+====================================================================================
+
+
+Function Aliasing:
+------------------
+- We can give another name
+
+Ex:
+def wish(name):
+    print(f"hello, hi {name}")
+
+
+greet = wish
+
+wish('pratap')
+greet('rohit')
+
+O/p:
+hello, hi pratap
+hello, hi rohit
+
+Note: If we delete one name, still we can access that function by alias name.
+Ex:
+def wish(name):
+    print(f"hello, hi {name}")
+
+greet = wish
+
+wish('pratap')
+greet('rohit')
+
+del wish
+
+greet('pratap')
+
+
+Nested functions:
+-----------------
+- Function inside another function
+- Ex:
+def outer():
+    print(f"outer function")
+    def inner():
+        print("inner function")
+
+    inner() 
+
+outer()   ## Executes
+inner()   ## Error: not accessible
+
+- To access inner functions outside the outer function by using global keyword.
+Ex:
+def outer():
+    print(f"outer function")
+    global inner
+    def inner():
+        print("inner function")
+
+    inner()
+
+outer() ## Executes
+inner() ## Executes
+
+
+
+Modules:
+========
+- A group of Functions, variables and classes saved to a file
+- Every python file(.py) acts as a module.
+
+-------------------------
+Ex1: sample1.py
+# variables
+a = 10
+b = 20
+
+
+# functions
+def mul_nums(a, b):
+    return a * b
+
+
+def div_nums(a, b):
+    return a / b
+
+
+# classes
+class A_class:
+    pass
+------------------------
+
+- Above sample1.py file have
+	- variables a,b
+	- functions mul_nums, div_nums
+	- class A_class
+
+- There are '2' Types of modules,
+	1. In-built modules
+	2. User-Defined modules
+
+- In-built module are provided by python by default.
+	Ex: functools, math
+- User-defined modules are defined by the programmer.
+	ex: sample1.py (see above example)
+
+
+- If we want to use members of module in our program, then we need to import that module.
+Syntax: import module_name
+Ex: 
+>>> import math
+>>> import functools
+
+- To access members of math module like ceil(), floor(), pi... then we need to reference that module name
+Ex:
+>>> import math
+>>> math.pi
+3.141592653589793
+>>> math.ceil(3.4536)
+4
+>>> math.floor(4.9)
+4
+
+Note: Whenever we are using a module in our program, for that module compiled file will be generated and stored in the hard disk permanently.
+
+
+Renaming a module at the time of import:
+----------------------------------------
+- We can rename a module using 'as' keyword.
+
+Ex:
+>>> import math as m
+>>> pi
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'pi' is not defined
+>>> math.pi
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'math' is not defined
+>>> m.pi
+3.141592653589793
+>>>
+
+- In the above example, 'math' is the original module name, 'm' alias name for 'math'.
+- Once we rename a module, We must access members by using this alias name 'm', but not the original module name i.e 'math'.
+- If we try to access to members using original module name, we will get Error.
+
+
+from...import:
+--------------
+- We can import particular members of module using from...import.
+- The main advantage of this from..import is we can access the members directly without using module name.
+
+Syntax: from module_name import members
+Ex:
+>>> from math import pi
+>>> pi
+3.141592653589793
+>>> from math import ceil
+>>> ceil(5.6)
+6
+>>>
+
+
+- We can import all the members of a module using '*'
+Ex:
+>>> from math import *
+>>> pi
+3.141592653589793
+>>> ceil(5.6)
+6
+>>>
+
+Various possibilities of import:
+--------------------------------
+1. import modulename
+2. import module1, module2, module3
+3. import module1 as m1
+4. import module1 as m1, module2 as m2, module3 as m3
+5. from module import member
+6. from module import member1, member2
+7. from module import member as m
+8. from module import *
+
+Member aliasing:
+----------------
+
+Syntax: from module import member as m
+import module1 as m1, module2 as m2, module3 as m3
+
+Ex:
+>>> from math import pi as a
+>>> a
+3.141592653589793
+>>>
+
+Reloading a module:
+-------------------
+- By default module will be loaded only once eventhough we are importing multiple times.
+>>> import math
+>>> import math
+>>> import math
+>>> math.pi
+3.141592653589793
+
+
+Ex1:
+from sample1 import *
+a = 100
+print(a) # 100
+import imp
+imp.reload(sample1)
+print(sample1.a) # 10
+
+
+
+Finding members of a module:
+-----------------------------
+- We can find all members of a module using dir() function.
+Syntax: dir(module_name)
+Ex:
+>>> import math
+>>> dir(math)
+['__doc__', '__loader__', '__name__', '__package__', '__spec__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'cbrt', 'ceil', 'comb', 'copysign', 'cos', 'cosh', 'degrees', 'dist', 'e', 'erf', 'erfc', 'exp', 'exp2', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'gcd', 'hypot', 'inf', 'isclose', 'isfinite', 'isinf', 'isnan', 'isqrt', 'lcm', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'log2', 'modf', 'nan', 'nextafter', 'perm', 'pi', 'pow', 'prod', 'radians', 'remainder', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'tau', 'trunc', 'ulp']
+>>>
+
+
+- We can get all information about a module using help() also.
+>>> help(math)
+
+
+Special Variable __name__:
+--------------------------
+- For every python program, a special variable __name__ will be added internally.
+- This variable stores information regarding whether the program is executed as an individual program or as a module.
+- If the program executed as an individual program then the value of this variable is __main__
+- If the program executed as a module from some other program then the value of this variable is the name of module where it is defined.
+
+- Hence by using this __name__ variable we can identify whether the program is executed directly as a module.
+
+
+
+
+
+
+Working with random module:
+---------------------------
+- Generate some random value
+- We can use these functions while developing games, in cryptogram and to generate random numbers on fly for authentication.
+Ex:
+>>> from random import *
+>>> randrange(10, 20, 2)
+14
+>>> randrange(10, 20, 2)
+14
+>>> randrange(10, 20, 2)
+16
+>>> randint(1000, 9999)
+2677
+>>> randint(1000, 9999)
+8659
+>>> uniform(10, 20)
+19.65482245030431
+>>> uniform(10, 20)
+12.91544752688931
+>>> l = ['A', 'B', 'C', 'S']
+>>> choice(l)
+'A'
+>>> choice(l)
+'C'
+>>> choice(l)
+'B'
+>>> choice(l)
+'B'
+>>> choice(l)
+'S'
+
+Packages:
+=========
+- It is a encapsulation mechanism to group related modules into a single unit.
+- Package is nothing but folder or directory which representscollection of Python modules.
+- Any folder or directory contains __init__.py file, is considered as a Python package. This __init__.py file can be empty.
+- A package can contains sub packages also.
+
+
+The main advantages of package statement are,
+- We can resolve naming conflicts.
+- We can identify our components uniquely
+- It improves modularity of an application
+
+
+- Group of python packages in nothing but a Python Library.
+
+
+
+Additional Topics:
+=================
+
+1. datetime module:
+---------------
+- Working with date and time.
+
+Ex:
+>>> import datetime
+>>> dt = datetime.datetime.now()
+>>> dt
+datetime.datetime(2023, 5, 1, 21, 11, 36, 418385)
+>>> dt_format = dt.strftime('%d-%m-%Y %H:%M:%S')
+>>> dt_format
+'01-05-2023 21:11:46'
+>>>
+
+
+2. time() module:
+--------------
+>>> import time
+>>> time.gmtime(0)
+time.struct_time(tm_year=1970, tm_mon=1, tm_mday=1, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=3, tm_yday=1, tm_isdst=0)
+
+3. calendar():
+----------
+
+import calendar
+year = 1947
+print(calendar.calendar(year))
+
+
+4. sys():
+----------
+
+import sys
+
+if total.seconds<3:
+    sys.exit()
+
+5. os():
+--------
+>>> import os
+>>> os.getcwd()
+'C:\\Users\\Srk Reddy Somu'
+>>> os.chdir(r"C:\Users\Srk Reddy Somu\OneDrive\Desktop\my_work")
+>>> os.getcwd()
+'C:\\Users\\Srk Reddy Somu\\OneDrive\\Desktop\\my_work'
+>>>
+
+
+
+
+Note: We can import external python packages/libraries/modules using pip(python installation package).
+Sysntax: pip install <package_name>
+Ex: pip install matplotlib
+
+- This installation needs internet connectivity.
+
+- To uninstall specific package:
+	Ex: pip uninstall <package_name>
+
+=========================================================================================================================================
+=========================================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

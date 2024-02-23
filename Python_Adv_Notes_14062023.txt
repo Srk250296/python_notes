@@ -1,0 +1,2125 @@
+Python Advanced:
+----------------
+
+1. OOP'S part-1: Classes & objects
+2. OOP'S part-2: Inheritance
+3. OOP'S part-3: Polymorphism
+4. OOP'S part-4: Abstraction
+5. Exception Handling
+6. File Handling
+7. Multi-Threading 
+8. Python Database programming
+9. Regular Expressions & Web scraping
+10. Decorators
+11. Generators
+12. Assertions
+13. Python Logging
+14. Unit testing
+
+:: 7 (2days), 9 (1day or 90 min), 12(15min), 13(30 to 40min), 14(30 min)
+================================================================================
+
+
+
+OOP'S part-1: Classes & objects:
+================================
+
+class:
+------
+- In python everything is an object.
+- To create objects we required some Model or Plan or Blue print, which is nothing but class.
+- We can write class to represent properties(attributes) and actions(behaviour) of object.
+
+- Properties cab be represented by variables.
+- Actions can be represented by Methods.
+
+- Hence, class contains both variables, methods.
+
+
+
+How to define a class:
+---------------------
+- We can define a class by using class keyword.
+Syntax:
+-------
+class className:
+	''' documentation string '''
+	variables # instant variables, static variables and local variables
+	methods   # instant methods, class methods and static methods
+
+
+- Documentation string represents description of the class.
+- Within the class doc string is Optional.
+- We can get doc string by using,
+	1). print(className.__doc__)
+	2) help(className)
+
+Ex:
+class Student:
+    ''' This is a demo class program reg. student details'''
+
+print(Student.__doc__)
+help(Student)
+
+- Within the class we can represent data by using variables.
+- There are 3 types of variables are allowed.
+	1. Instant variables 
+	2. Static variables
+	3. Local variables
+
+
+
+- Within the class we can represent operations by using methods.
+- There are 3 types of methods are allowed.
+	1. Instant methods
+	2. Class methods
+	3. Static methods
+
+
+- We can define methods within the class using def keyword.
+
+Ex: 
+class Student:
+    ''' This is a demo class program reg. student details'''
+    def __init__(self):
+        self.name = 'Rohit'
+        self.age = 40
+        self.marks = 80
+    def display(self):
+        print("Name is: ", self.name)
+        print("Age is: ", self.age)
+        print("Marks: ", self.marks)
+
+
+
+Object:
+------
+- Pysical existance of a class is nothing but object.
+- We can create any number of objects for a class.
+
+Syntax: reference_variable = className()
+Ex: stu = Student()
+
+
+Reference Variable:
+-------------------
+- The variable which can be used to refer object is called reference variable.
+- By using reference variable we can access properties(variables) and methods.
+
+Ex: Take input data while creating object
+class Student:
+    ''' This is a demo class program reg. student details'''
+    def __init__(self, name, age, marks):
+        self.name = name
+        self.age = age
+        self.marks = marks
+    def display(self):
+        print("Name is: ", self.name)
+        print("Age is: ", self.age)
+        print("Marks: ", self.marks)
+
+stu = Student('Rohit', 30, 90)
+stu.display()
+print(stu.marks)
+
+
+
+self:
+-----
+- self is the default variable which is always pointing the current object.
+- By using self we can access instant variables and instant methods of object.
+
+Note:
+- self should be first parameter inside constructor.
+	Ex: def __init__(self, name, age, marks):
+- self should be first parameter inside instant methods.
+	Ex: def display(self):
+
+
+Constructor: 
+------------ 
+- Constructor: __init__(self)
+- Constructor is a special method in python.
+- Constructor will be executed automatically at the time of object creation.
+- The main purpose of Constructor is to declare and initialize instant variables.
+- Per object Constructor will be executed only once.
+- Constructor can take atleast one argument(i.e self)
+- Constructor will be optional and if we are not providing any constructor then python will provide default constructor.
+
+Ex:
+class A:
+    def __init__(self):
+        print("constructor calling...")
+        self.a = 100
+
+    def disply(self):
+        print("method calling...")
+
+
+obj = A()
+obj.disply()
+
+O/p:
+constructor calling...
+method calling...
+
+
+Difference between Methods and Constructors:
+-------------------------------------------
+1. 	Methods: method name should be anything
+	Constructor: name should be compulsory  __init__
+
+2.	Methods: Methods will be execute only when we call that method
+	Constructor: Constructor will be executed automatically at the time of object creation
+
+3.    Methods: Methods can be called any number of times per one object.
+	Constructor: Constructor will be executed only once per object.
+
+4.	Methods: Inside methods we can write business logic.
+	Constructor: Inside Constructor we can declare and initialize instant variables.
+
+
+
+Types of Variables:
+===================
+
+* There are 3 types of variables.
+	1. Instant variables (Object level variables)
+	2. Static variables (Class level variables)
+	3. Local variables (Method level variables)
+
+
+
+1. Instant variables: 
+---------------------
+- Also called as Object level variables
+- Value of a variable is varied from object to object
+- For every object a seperate copy of instance variables will be created.
+
+- Declare
+- Access
+- Delete
+
+Ex:
+class A:
+    def __init__(self, a, b):
+        print("constructor calling...")
+        self.a = a # Instance variables
+        self.b = b # instance variables
+
+    def show(self):
+        print("method calling...", self.a + self.b)
+
+obj = A(100, 200) ## a=100, b=200
+obj.show()
+obj.show()
+
+obj1 = A(200, 300) ## a=200, b=300
+obj1.show()
+
+- In the above example, 
+	For obj: a=100, b=200
+	For obj1: a=200, b=300
+- a, b varied for obj, obj1.
+
+A) Where we can declare Instance variables:
+-------------------------------------------
+1) Inside Constructor by using self variable
+2) Inside Instance method by using self variable
+3) Outside of the class by using object reference variable
+
+
+1) Inside Constructor by using self variable:
+- We can declare instance variables inside a Constructor by using self keyword.
+- Once we create object, automatically these variables will be added to the object.
+
+
+2) Inside Instance method by using self variable:
+-------------------------------------------------
+- We can also declare Instance variables Inside Instance method by using self variable
+- If any instance variable declared inside a instance method, these instance variables will be added once we call that method.
+
+
+3) Outside of the class by using object reference variable:
+-----------------------------------------------------------
+- We can also add instance variables outside the class by using obj_ref_var.
+
+Ex:
+class A:
+    def __init__(self, a, b):
+        print("constructor calling...")
+        self.a = a
+        self.b = b
+
+    def show(self, c):
+        self.c = c
+        print("method calling...\nsum is: ", self.a + self.b)
+        print("c is :", self.c)
+
+obj = A(100, 200)
+obj.show(500)
+obj.k = 20
+
+obj1 = A(200, 300)
+obj1.show(700)
+obj1.k = 30
+
+print("k is for obj: ", obj.k)
+print("k is for obj1: ", obj1.k)
+
+---------------------------------------------
+
+B) How to Access Instance Variables:
+------------------------------------
+1) Inside Constructor by using self variable (self.variable_name)
+2) Inside Instance method by using self variable (self.variable_name)
+3) Outside of the class by using object reference variable (obj_ref_var.variable_name)
+
+C) How to Delete Instance Variables:
+------------------------------------
+1) Inside Constructor by using self variable (del self.variable_name)
+2) Inside Instance method by using self variable (del self.variable_name)
+3) Outside of the class by using object reference variable (del obj_ref_var.variable_name)
+
+
+Ex: Instance variables: Declare, Access, Delete
+
+class A:
+    def __init__(self, a, b):
+        print("constructor calling...")
+        self.a = a
+        self.b = b
+        self.d = 500
+        print('a is inside constuctor: ', self.a)
+        del self.d
+
+    def show(self, c):
+        self.c = c
+        self.e = 10
+        print("method calling...\nsum is: ", self.a + self.b)
+        print("c is :", self.c)
+        print("a is inside instance method: ", self.a)
+        del self.e
+
+
+obj = A(100, 200)
+print("a is outside class: ", obj.a)
+obj.show(500)
+obj.k = 20
+print("k is for obj: ", obj.k)
+
+print(obj.__dict__)
+
+
+del obj.a
+del obj.b
+del obj.k
+
+
+obj1 = A(200, 300)
+obj1.show(700)
+obj1.k = 30
+print("k is for obj1: ", obj1.k)
+
+print(obj1.__dict__)
+
+
+Note:
+-----
+- If we change values of a instance variables of one object then those change will not be reflected to the remaining objects.
+- Because those are seperate copy of instance variables are available.
+
+
+
+2. Static Variables: Class level variables
+--------------------
+- Also called as Class level variables
+- Value of a variable is not varied from object to object
+- We can declare within the class directly but outside the constuctor and methods.
+- For total class only one copy of static variables will be created and shared by all objects of that class.
+- For every object a same copy of static variables will be created.
+- We can access static variables either by class name or by object reference. But recomended to use class name.
+
+- Declare (Create)  -- C
+- Access (Retrieve) -- R
+- Modify (Update)   -- U
+- Delete (Delete)   -- D
+
+-- CRUD or CURD operations
+
+Various places to Declare Static variables:
+-------------------------------------------
+- In general, we can declare Within the class directly but outside of any methods.
+- Inside connstructor by using class name
+- Inside instance method by using class name
+- Inside the class methods by using class name or cls variable
+- Inside Static method by using class name
+- We can not declare outside(doesn't make sense)
+
+Ex:
+class A:
+    a = 100
+    def __init__(self):
+        A.b = 200
+
+    def m1(self):
+        A.c = 300
+
+    @classmethod
+    def m2(cls):
+        A.d = 400
+        cls.e = 500
+
+    @staticmethod
+    def m3():
+        A.f = 600
+
+obj = A()
+obj.m1()
+obj.m2()
+obj.m3()
+print(A.__dict__)
+
+
+How to Access Static Variable:
+-----------------------------
+- Inside connstructor: by using either class name or self
+- Inside instance method: by using either class name or self variable
+- Inside the class method: by using either class name or cls variable
+- Inside Static method: by using class name
+- We can access outside the class: by using either object reference variable or class name
+
+
+Ex:
+class A:
+    a = 100
+    def __init__(self):
+        A.b = 200
+        print("a is in constructor using class name: ", A.a)
+        print("a is in constructor using self: ", self.a)
+
+    def m1(self):
+        A.c = 300
+        print("m1: a is using class name: ", A.a)
+        print("m1: b is using class name: ", A.b)
+        print("m1: a is using self name: ", self.a)
+        print("m1: b is using self name: ", self.b)
+
+    @classmethod
+    def m2(cls):
+        A.d = 400
+        cls.e = 500
+        print("m2: a is using class name: ", A.a)
+        print("m2: b is using class name: ", A.b)
+        print("m2: c is using class name: ", A.c)
+        print("m2: a is using cls name: ", cls.a)
+        print("m2: b is using cls name: ", cls.b)
+        print("m2: c is using cls name: ", cls.c)
+
+    @staticmethod
+    def m3():
+        A.f = 600
+        print("m4: a is using class name: ", A.a)
+        print("m4: b is using class name: ", A.b)
+        print("m4: c is using class name: ", A.c)
+        print("m4: d is using class name: ", A.d)
+        print("m4: e is using class name: ", A.e)
+        print("m4: f is using class name: ", A.f)
+obj = A()
+obj.m1()
+obj.m2()
+obj.m3()
+#print(A.__dict__)
+
+print("::: outside the class using Object reference variable: a is :", obj.a)
+print("::: outside the class using Object reference variable: b is :", obj.b)
+print("::: outside the class using Object reference variable: c is :", obj.c)
+print("::: outside the class using Object reference variable: d is :", obj.d)
+print("::: outside the class using Object reference variable: e is :", obj.e)
+print("::: outside the class using Object reference variable: f is :", obj.f)
+
+print("::: outside the class using class name: a is :", A.a)
+print("::: outside the class using class name: b is :", A.b)
+print("::: outside the class using class name: c is :", A.c)
+print("::: outside the class using class name: d is :", A.d)
+print("::: outside the class using class name: e is :", A.e)
+print("::: outside the class using class name: f is :", A.f)
+
+
+
+Where we can modify the static variables:
+-----------------------------------------
+- Anywhere either within the class or outside the class we can modify by using class name.
+- But inside the class method by using either class name or cls variabe.
+
+Ex:
+class A:
+    a = 100
+    a1 = 1000
+    def __init__(self):
+        A.b = 200
+        print("a is in constructor using class name: ", A.a)
+        print("a is in constructor using self: ", self.a)
+
+    def m1(self):
+        A.c = 300
+        print("m1: a is using class name: ", A.a)
+        print("m1: b is using class name: ", A.b)
+        print("m1: a is using self name: ", self.a)
+        print("m1: b is using self name: ", self.b)
+        A.a = 10 # modify
+        self.a1 = 1  # modify, becomes instance variable.
+        print("m1: a1", A.a1) ## 1000
+        print("m1: a1", self.a1) ## 1
+
+
+    @classmethod
+    def m2(cls):
+        A.d = 400
+        cls.e = 500
+        A.b = 20    # modify
+        cls.c = 30  # modify
+        print("m2: a is using class name: ", A.a)
+        print("m2: b is using class name: ", A.b)
+        print("m2: c is using class name: ", A.c)
+        print("m2: a is using cls name: ", cls.a)
+        print("m2: b is using cls name: ", cls.b)
+        print("m2: c is using cls name: ", cls.c)
+        print("m2: a1 cls: ", cls.a1) ## 1000
+
+    @staticmethod
+    def m3():
+        A.f = 600
+        A.d = 40    ## modify
+        print("m4: a is using class name: ", A.a)
+        print("m4: b is using class name: ", A.b)
+        print("m4: c is using class name: ", A.c)
+        print("m4: d is using class name: ", A.d)
+        print("m4: e is using class name: ", A.e)
+        print("m4: f is using class name: ", A.f)
+obj = A()
+obj.m1()
+obj.m2()
+obj.m3()
+#print(A.__dict__)
+
+print("::: outside the class using Object reference variable: a is :", obj.a)
+print("::: outside the class using Object reference variable: b is :", obj.b)
+print("::: outside the class using Object reference variable: c is :", obj.c)
+print("::: outside the class using Object reference variable: d is :", obj.d)
+print("::: outside the class using Object reference variable: e is :", obj.e)
+print("::: outside the class using Object reference variable: f is :", obj.f)
+
+print("::: outside the class using class name: a is :", A.a)
+print("::: outside the class using class name: b is :", A.b)
+print("::: outside the class using class name: c is :", A.c)
+print("::: outside the class using class name: d is :", A.d)
+print("::: outside the class using class name: e is :", A.e)
+print("::: outside the class using class name: f is :", A.f)
+print("::: outside the class using class name: a1 is :", A.a1)
+
+
+* Note: By using obj_ref_var / self we can read static variables but we cannot modify or delete.
+	- If we are trying to modify, then a new instance variable will be added to that particular object.
+
+
+
+How to delete Static variables:
+------------------------------
+- We can delete static variables from anywhere by using,
+Syntax: del classname.variablename
+
+- But inside the class method, 
+Syntax: del classname.variablename (or) del cls.variablename
+
+Ex:
+class A:
+    a = 100
+    a1 = 1000
+    def __init__(self):
+        A.b = 200
+        del A.a
+
+    def m1(self):
+        A.c = 300
+        del A.b
+
+
+    @classmethod
+    def m2(cls):
+        A.d = 400
+        cls.e = 500
+        del A.c
+        # del cls.c
+
+    @staticmethod
+    def m3():
+        A.f = 600
+        A.d = 40    ## modify
+        del A.d
+obj = A()
+obj.m1()
+obj.m2()
+obj.m3()
+#print(A.__dict__)
+
+del obj.a
+# del A.a
+
+print("::: outside the class using class name: a is :", A.a) ## Error
+
+
+
+* Note: By using obj_ref_var / self we can read static variables but we cannot modify or delete.
+	- If we are trying to modify, then a new instance variable will be added to that particular object.
+
+
+
+3. Local Variables:
+-------------------
+- Sometimes to meet temporary requirements of  programmer, we can  declare variables inside a method directly, such type of variables are called
+  Static variables
+- Also called as Temporary variables
+- Also called as Method level variables
+- Created at the time of method execution and destroy once method completes
+- Local variables can not be accessed from outside of method
+
+
+Ex:
+class A:
+    a = 100
+    a1 = 1000
+    def __init__(self):
+        A.b = 200
+
+    def m1(self):
+        a2 = 50 ## local var
+
+    @classmethod
+    def m2(cls):
+        A.d = 400
+        cls.e = 500
+        a4 = 600 ## local var
+        print(a4+A.d)
+
+    @staticmethod
+    def m3():
+        A.f = 600
+        k = 500 ## local var
+        print(A.f+k)
+
+obj = A()
+obj.m1()
+obj.m2()
+obj.m3()
+
+#print(a2)  ## Error
+
+
+===============================
+
+
+Types of Methods
+================
+
+- Inside python class, 3 types of methods are alllowed.
+
+	1. Instance Methods
+	2. Class Methods
+	3. Static Methods
+
+
+1. Instance Methods:
+--------------------
+- Inside Method implementation, if we are using instance variables then such type of methods we are called 'Instance Methods'.
+- Inside instance method declaration, we have to pass self variable.
+	syntax: def m1(self): pass
+- By using self varable inside method, we can able to access instance variables
+- Within the class we can call instance method by using self variable and from outside the class by using object reference variable.
+
+
+
+Ex: Student class, grade
+
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+    def show(self):
+        print("Hi, ", self.name)
+
+    def grade(self):
+        if self.marks >= 60:
+            print("Grade A")
+        elif self.marks >= 50:
+            print("Grade B")
+        elif self.marks >= 40:
+            print("Grade C")
+        else:
+            print("Grade F")
+
+
+
+n = int(input("enter no of students: "))
+for i in range(1, n+1):
+    name = input(f"enter student {i} name: ")
+    marks = int(input("enter marks: "))
+    obj = Student(name, marks)
+    obj.show()
+    obj.grade()
+
+
+
+Setters and Getters:
+--------------------
+- We can set and get the value of instance variables by using setter and getter methods.
+
+Setter method:
+--------------
+- Setter methods can be used to set values to the instance variables.
+- Also called as mutator methods.
+
+Syntax:
+def setVariable(self, variable):
+	self.variable = variable
+
+Ex:
+def setName(self, name):
+	self.name = name
+
+
+Getter methods:
+---------------
+- Getter methods can be used to get values of the instance variables.
+- Also called as accessor methods.
+
+Syntax:
+def getVariable(self):
+	return self.variable
+
+Ex:
+def getName(self):
+	return self.name
+
+Ex1: Setters, Getters
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+    def setName(self, name):
+        self.name = name
+
+    def getName(self):
+        print("Hi,", self.name)
+
+    def grade(self):
+        if self.marks >= 60:
+            print("Grade A")
+        elif self.marks >= 50:
+            print("Grade B")
+        elif self.marks >= 40:
+            print("Grade C")
+        else:
+            print("Grade F")
+
+
+
+obj = Student('Rohit', 56)
+
+obj.setName('Pratap')
+obj.getName()
+
+
+Ex2:
+----
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+    def setresult(self):
+        if self.marks>=40:
+            self.result = 'Pass'
+        else:
+            self.result = 'Fail'
+
+    def getresult(self):
+        print(f"{self.name} result: ", self.result)
+
+    def grade(self):
+        if self.marks >= 60:
+            print("Grade A")
+        elif self.marks >= 50:
+            print("Grade B")
+        elif self.marks >= 40:
+            print("Grade C")
+        else:
+            print("Grade F")
+
+
+
+obj = Student('Rohit', 56)
+
+obj.setresult()
+obj.getresult()
+
+==================================================
+
+Class Methods:
+-------------
+
+
+
+
+Static Methods:
+---------------
+
+
+
+
+Inner classes:
+--------------
+class inside clas
+
+
+
+
+
+Garbage Collection:
+-------------------
+
+
+
+
+Destructors:
+------------
+del
+
+
+
+Polymorphism:
+-------------
+Poly-- Many
+Morphs -- Forms
+
+One having many forms ---> Polymorphism
+
+2 types:
+---------
+
+1. Overloading
+	a. Operator Overloading (for ex: +, *)
+	b. Method Overloading
+	c. Constructor Overloading
+2. Overriding
+	a. Method Overriding
+	b. Constructor Overriding
+
+
+
+Abstraction:
+============
+
+Abstraction Methods:
+-------------------
+- Sometimes we don't know about implementation, still we can declare a method. Such types of methods we are called Abstract methods.
+- Has only declaration but not implemented.
+- we can do by using @abstractmethod decorator
+- @abstractmethod is present in abc module
+- import abc, otherwise we will get error.
+
+
+Abstraction Class:
+------------------
+- Sometimes implementation of a class is not complete, such types are called Abstraction Class.
+- Every abstract class in python should be derived from ABC class, which is present in abc module.
+
+Interface:
+---------
+- In general if an abstract class contains only abstract methods
+
+
+Access modifiers: We have 3 types of access modifiers-
+=================
+Attributes:
+	- public Attributes (access anywhere, i.e in parent class, child class, outside the class)
+	- protected Attributes (access only in parent class, and child class only. _variable_name)
+	- private Attributes (access only in parent class, __variable_name)
+
+
+EX:
+==
+
+class A():
+    a = 100
+    _b = 200
+    __c = 300
+
+    def m1(self):
+        print("A-m1:parent a is :",A.a)
+        print("A-m1:parent b is :",A._b)
+        print("A-m1:parent c is :", A.__c)
+
+class B(A):
+    def m2(self):
+        print("B-m2:child a is :",A.a)
+        print("B-m2:child b is :", A._b)
+
+
+obj = A()
+obj.m1()
+print("outside: a: ",obj.a)
+print(obj._b)
+print("outside c is : ",obj._A__c) ## objref._classname__variablename
+
+
+Encapsulation in Python: 
+========================
+
+Encapsulation is a mechanism of wrapping the data (variables) and code acting on the data (methods) together as a single unit. In encapsulation, the variables of a class will be hidden from other classes, and can be accessed only through the methods of their current class.
+
+- variables of a class will be hidden from other classes, and can be accessed only through the methods of their current class
+
+================================
+** 4 pillers of OOPS: 
+
+1. Inheritance (access parent members in child)
+2. Abstraction(partially implemented)
+3. Polymorphism (one having many forms. overloading, overriding)
+4. Encapsulation (hiding the code)
+
+====================================
+
+Exception Handling:
+===================
+
+Types of Errors:
+1. Syntax Errors (invalid syntax)
+2. Run time Errors (Exceptions)
+
+Run time Errors:
+---------------
+- Also called as Exceptions
+- while executing the program if something goes wrong 
+  bcoz of end user input or program logic or memory problems etc.. 
+  then we will get Runtime Errors.
+
+- Exception handling concept applicable only for Runtime-Errors, but not for syntax errors.
+
+=> what is exception..??
+Ans: An unwanted and unexpected event that disturbs the normal flow of the program.
+Ex: ZeroDivisionError, FileNotFoundError, IndentationError, TypeError, ValueError, EOFLError, SleepingError
+
+
+Types of Exceptions:
+--------------------
+- There are 2 types of exceptions.
+	1. Predefined Exceptions (in-built)
+	2. User defined Exceptions
+
+Exception handling:
+-------------------
+syntax: 
+
+	try:
+		some logic(risky code)
+	except:
+		handling code/ alternative way
+	finally:
+		clean-up code
+
+- finally is optional
+- try - matched except should be compulsory
+
+Ex:
+===
+
+try:
+    print("stmt-1")
+    print("stmt-2")
+    print("stmt-3")
+    try:
+        print("stmt-4")
+        print("stmt-5")
+        print("stmt-6")
+    except:
+        print("stmt-7")
+    finally:
+        print("stmt-8")
+        print("stmt-9")
+except:
+    print("stmt-10")
+finally:
+    print("stmt-11")
+    print("stmt-12")
+
+else block:
+-----------
+
+Syntax:
+-------
+
+try:
+	some risky code
+except:
+	executed if error in try
+else:
+	will be executed if there is no exception in try
+finally:
+	executed if error occured or not
+
+Ex:
+===
+try:
+	print("some risky code")
+except:
+	print("executed if error in try")
+else:
+	print("will be executed if there is no exception in try")
+finally:
+	print("executed if error occured or not")
+
+
+Types of Exceptions:
+--------------------
+- There are 2 types of exceptions.
+	1. Predefined Exceptions (in-built)
+	2. User defined Exceptions
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+File Handling:
+==============
+
+Types of file:
+--------------
+ 2 Types:
+
+1. Text files (character data)
+2. Binary files (binary data like images, video files, audio files)
+
+
+
+
+open a file:
+------------
+- Before performing any operation (read/write) on the file, first we have to open that file.
+- for this we use python in-built function open()
+- while opening a file we have specify mode(read, write, append...)
+- syntax:  f = open(filename, mode)
+
+Types of mode:
+--------------
+1. "r" mode
+-----------
+- read mode
+- open an existing file to read
+- file pointer is positioned at beginning of the file.
+- if file exists it will open, if not exists it will through FileNotFoundError.
+- This is default mode
+
+2. "w" mode:
+-------------
+- write mode
+- open an existing file to write operation
+- if file exists, data will overridden, if file doesn't exists it will create a new file.
+- returns no. of characters are written.
+
+3. "a" mode:
+------------
+- append mode
+- open an existing file to append operation
+- it won't overridden the data to a file
+- If specified file is already exists it will append the data
+- If specified file doesn't exists then it will create a new file and write the data.
+- file pointer is at end of the existing file.
+
+4. "r+" mode:
+-------------
+- read and write mode
+- to read and write data into a file
+- Previous data in the file will not be deleted
+- File pointer is placed at end of the file.
+
+5. "w+" mode:
+------------
+- write and read
+
+6. "a+" mode:
+-------------
+- append and read mode
+
+7. "x" mode:
+-----------
+- write into a file in exclusive mode
+- if file already exists, it return error
+
+Note: for bimary files--
+	"rb", "wb", "ab", "rb+", "wb+", "ab+"
+
+close a file:
+-------------
+- After completing our operations on the file, we have to close the file.
+- closing a file is highly recommended
+- For this we have to use close() in-built function.
+- syntax: f.close()
+
+
+
+-- open, (read, or write save) close
+
+
+writing data to Text Files:
+----------------------------
+- 2 ways to write data to the Text file
+
+1. f.write(str)
+2. f.writelines(list of lines)
+
+ex:
+===
+>>> f = open("sample1.txt", "w")
+>>> f.write("This is a new file")
+18
+>>> f.write(10)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: write() argument must be str, not int
+>>> f.write("\n 10")
+4
+>>> f.close()
+>>> f = open("sample.txt", "w")
+>>> l = ["line1\n","line2\n","line3"]
+>>> f.writelines(l)
+>>> f.close()
+>>> f = open("sample2.txt", "w")
+>>> f.write("line1\n")
+6
+>>> f.write("line1\n","line2\n")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: write() takes exactly one argument (2 given)
+>>> f.close()
+>>>
+
+
+Reading character data from Text Files:
+-----------------------------------------
+
+We can read the data from the Text Files using following read methods.
+- read(): To read total data from the file
+- read(n): To read 'n' characters from the file
+- readline(): To read only one line
+- readlines(): To read all lines into a list
+
+
+- f.tell(): We can use tell() method to return the current position of the cursor.
+- f.seek(n): We can use seek() method to move cursor(file pointer) to specified location.
+
+
+
+ex:
+---
+>>> f = open("sample.txt", "r")
+>>> f.read()
+'line1\nline2\nline3\nline4\nline5'
+>>> f.read(5)
+''
+>>> f.close()
+>>> f.read(5)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: I/O operation on closed file.
+>>> f = open("sample.txt", "r")
+>>> f.read(3)
+'lin'
+>>> f.tell()
+3
+>>> f.read(7)
+'e1\nline'
+>>> f.tell()
+11
+>>> f.seek(0)
+0
+>>> f.tell()
+0
+>>> f.read(5)
+'line1'
+>>> f.seek(0)
+0
+>>> f.readline()
+'line1\n'
+>>> f.readline()
+'line2\n'
+>>>
+>>> f.readline()
+'line3\n'
+>>> f.readline()
+'line4\n'
+>>> f.readline()
+'line5'
+>>> f.readline()
+''
+>>> f.readline()
+''
+>>> f.readline()
+''
+>>> f.seek(0)
+0
+>>> f.seek(3)
+3
+>>> f.tell()
+3
+>>> f.read(5)
+'e1\nli'
+>>> f.seek(0)
+0
+>>> f.readlines()
+['line1\n', 'line2\n', 'line3\n', 'line4\n', 'line5']
+>>>
+
+
+
+How to check a particular file exist or not:
+--------------------------------------------
+- We can use os library to know info about a file
+- os module has path sub-module contains isfile() function to check whether a particular file exists or not
+- syntax: os.path.isfile(file_name)
+
+Ex:
+
+>>> import os
+>>> fn = "123.txt"  ## exists in folder
+>>> fn1 = "234.txt" ## not exists
+>>> os.path.isfile(fn1)
+False
+>>> os.path.isfile(fn)
+True
+>>> os.path.isfile("1234.txt")
+True
+>>>
+
+>>> if os.path.isfile(fn) == True:
+...     f  = open(fn, 'r')
+...     data = f.read()
+...     print(data)
+... else:
+...     print("file not exists")
+...
+new data
+>>>
+
+Ex1: To terminate our program
+>>> import sys
+>>> sys.exit(0)
+
+Ex2:
+print("hello")
+import sys
+sys.exit(0)
+
+
+Handling Binary data:
+---------------------
+
+Ex:
+>>> fn1 = r"C:\Users\Srk Reddy Somu\OneDrive\Desktop\files_practice\Telugu.mp3"
+>>> f = open(fn1, "rb")
+>>> f.read()
+---- some output ----
+>>> f.close()
+
+Ex1:
+fn1 = r"C:\Users\Srk Reddy Somu\OneDrive\Desktop\files_practice\Telugu1.mp3"
+
+if os.path.isfile(fn1) == False:
+    print("no such file")
+    sys.exit(0)
+else:
+    f = open(fn1, 'rb')
+    data = f.read()
+    print(data)
+    f.close()
+
+print("file process done")
+
+
+Handling CSV files:
+-------------------
+
+- Comma seperated values
+- working witth csv files is very common
+- It provides csv module
+- import csv
+
+writing data into a CSV file:
+----------------------------
+- import csv
+- open a file
+- create a writer object
+- write data
+
+Ex:
+import csv
+path  = r"C:\Users\Srk Reddy Somu\OneDrive\Desktop\files_practice\sample_data.csv" ## Doesn't exists
+
+with open(path, 'w', newline="") as f:  # file created
+    w = csv.writer(f) 
+    w.writerow(["eno", 'ename', "sal"])
+    w.writerows([["123", "john", 10000], ["124", "jacob", 20000]])
+
+
+Reading data from csv file:
+--------------------------
+- import csv
+- open a file in read mode "r"
+- create a reader object
+- read data
+
+Ex:
+
+import csv
+path  = r"C:\Users\Srk Reddy Somu\OneDrive\Desktop\files_practice\sample_data.csv"
+
+with open(path, 'r') as f:
+    r = csv.reader(f)
+    data = list(r)
+    print(data)
+    print("process done...")
+
+
+
+Zipping and Unzipping files:
+----------------------------
+- It is very common requirement to zip and unzip files
+- Advatages:
+	1. To improve memory utilization
+	2. We can reduce transport time
+	3. We can improve performance
+
+- To perform zip and unzip python contains in-biult zipfile module
+- import zipfile
+- This module contains ZipFile class
+- from zipfile import ZipFile, ZIP_DEFLATED
+or 
+- from zipfile import *
+
+
+To create zip file:
+-------------------
+- syntax: f = ZipFile("file_name.zip", "w", ZIP_DEFLATED)
+	   f.write(filename)
+
+
+Ex:
+
+import os
+from zipfile import *
+print("before: ", os.getcwd())
+os.chdir(r"C:\Users\Srk Reddy Somu\OneDrive\Desktop\files_practice")
+print("after: ", os.getcwd())
+path = "data.zip"
+f = ZipFile(path, "w", ZIP_DEFLATED)
+f.write("123.txt")
+f.write("1234.txt")
+f.close()
+
+
+
+To perform unzip operation:
+---------------------------
+- syntax: f = ZipFile(file_name, 'r', ZIP_STORED)
+	    name = f.namelist()
+
+Ex:
+import os
+from zipfile import *
+print("before: ", os.getcwd())
+os.chdir(r"C:\Users\Srk Reddy Somu\OneDrive\Desktop\files_practice")
+print("after: ", os.getcwd())
+path = "data.zip"
+f = ZipFile(path, "r", ZIP_STORED)
+
+## Where to unzip these files. if folder doesn't exists, then it will create
+p1 = r"C:\Users\Srk Reddy Somu\OneDrive\Desktop\files_practice\unzip files"
+f.extractall(p1)
+
+
+Working with Directories:
+==========================
+
+1. To know current working directory
+
+Ex:
+>>> import os
+>>> os.getcwd()
+'C:\\Users\\Srk Reddy Somu'
+>>>
+
+
+2. create a sub directory in the current working directory
+
+Ex:
+>>> import os
+>>> os.getcwd()
+'C:\\Users\\Srk Reddy Somu'
+>>> os.chdir(r"C:\Users\Srk Reddy Somu\OneDrive\Desktop\files_practice")
+>>> os.getcwd()
+'C:\\Users\\Srk Reddy Somu\\OneDrive\\Desktop\\files_practice'
+>>> os.mkdir("my_new_folder")
+>>>
+
+
+3. create a sub-directory inside a sub-directory:
+
+Ex:
+>>> import os
+>>> os.getcwd()
+'C:\\Users\\Srk Reddy Somu\\OneDrive\\Desktop\\files_practice'
+>>> os.mkdir("my_new_folder")
+>>> os.mkdir("my_new_folder\my_new1")
+
+
+4. To create multiple directories inside sub-directory like dir1, dir2 ...etc
+
+Ex:
+>>> os.makedirs("test_fol\my_new1")
+>>>
+
+5. Remove a directory:
+- If folder is empty, then only it removes, otherwise error
+
+ex:
+>>> os.rmdir("my_new_folder")
+>>>
+
+6. Remove a directory if that doesn't empty:
+
+Ex:
+>>> import shutil
+>>> shutil.rmtree("test_fol")
+>>> shutil.rmtree("1")
+>>>
+
+
+7. copy a file or folder from one location another location
+
+syntax: shutil.copy(src_path, dst_path)
+
+Ex:
+>>> import shutil
+>>> shutil.copy("sample_data.csv", "fol1")
+'fol1\\sample_data.csv'
+
+8. move a file or folder from one location another location
+- syntax: shutil.move(src_path, dst_path)
+
+Ex:
+>>> import shutil
+>>> shutil.move(r"fol1\nsample_data1.csv", "fol2")
+'fol2\\nsample_data1.csv'
+>>>
+
+
+9. To know content in a folder
+Ex: 
+>>> import os
+>>> os.listdir()
+['1234567.txt', 'business-financial-data-september-2022-quarter-csv.zip', 'business-financial-data-september-2022-quarter.csv', 'data.zip', 'sample_data.csv', 'Telugu.mp3', 'unzip files']
+>>>
+
+========================
+
+10. To know content of a directory including sub directories:
+
+syntax: os.walk(path)
+- [root, dirs, files]
+
+Ex:
+---
+
+import os
+
+path  = r"C:\Users\Srk Reddy Somu\OneDrive\Desktop\files_practice"
+
+list_f = os.listdir(path)
+
+print(list_f)
+
+print("=====================")
+l = os.walk(path)
+
+print(list(l))
+
+o/p:
+---
+[
+
+('C:\\Users\\Srk Reddy Somu\\OneDrive\\Desktop\\files_practice', 
+['fol1', 'fol2', 'unzip files'], 
+['1234567.txt', 'business-financial-data-september-2022-quarter-csv.zip', 
+'business-financial-data-september-2022-quarter.csv', 'data.zip', 'sample_data.csv', 'Telugu.mp3']),
+ 
+ 
+('C:\\Users\\Srk Reddy Somu\\OneDrive\\Desktop\\files_practice\\fol1', 
+[], 
+['112.txt', 'nsample_data1.csv']),
+
+ 
+('C:\\Users\\Srk Reddy Somu\\OneDrive\\Desktop\\files_practice\\fol2', 
+['subdir1'], 
+['nsample_data1.csv']), 
+
+('C:\\Users\\Srk Reddy Somu\\OneDrive\\Desktop\\files_practice\\fol2\\subdir1', [], ['sample_data2.csv']), 
+
+('C:\\Users\\Srk Reddy Somu\\OneDrive\\Desktop\\files_practice\\unzip files', [], ['123.txt', '1234.txt'])
+
+]
+------------------
+
+Ex2:
+---
+import os
+
+path  = r"C:\Users\Srk Reddy Somu\OneDrive\Desktop\files_practice"
+
+for root, dirs, files in os.walk(path):
+    print("* Root: ",root)
+    print("** dirs: ", dirs)
+    #print(":: files: ", files)
+    for file in files:
+        print("file name: ", file)
+    print("-------------------------")
+
+
+-------------------
+
+Task: List out all the text files inside a folder including sub-folders
+-----
+Ans:
+----
+import os
+path  = r"C:\Users\Srk Reddy Somu\OneDrive\Desktop\files_practice"
+l = os.walk(path)
+l_txt = []
+
+for root, dirs, files in l:
+    print("* Root: ",root)
+    print("** dirs: ", dirs)
+    #print(":: files: ", files)
+    for file in files:
+        print("file name: ", file)
+        if file.endswith(".txt"):
+            l_txt.append(file)
+    print("-------------------------")
+
+print("\n:::::::::::\nlist of text files:", l_txt)
+
+=============
+Running other programs from python:
+-----------------------------------
+
+- syntax: os.system("command string")
+
+Ex1: 
+>>> import os
+>>> os.system("mkdir cmd_fol")
+0
+>>>
+os.system("ipconfig")
+
+ex2:
+os.system("python files_ex.py")
+
+How to get information about a file:
+-----------------------------------
+- we can get statistics about a file like size, filename,created, last modified, last accessed etc... by using stat() function of os module.
+- Syntax: os.stat(file_name)
+
+
+Ex:
+>>> import os
+>>> stats = os.stat("1234567.txt")
+>>> stats
+os.stat_result(st_mode=33206, st_ino=2814749767253149, st_dev=2566582266, st_nlink=1, st_uid=0, st_gid=0, st_size=39, st_atime=1685723207, st_mtime=1685722997, st_ctime=1685510235)
+>>> from datetime import datetime
+>>> modified = datetime.fromtimestamp(stats.st_mtime)
+>>> modified
+datetime.datetime(2023, 6, 2, 21, 53, 17, 594711)
+>>> ctime = datetime.fromtimestamp(stats.st_ctime)
+>>> ctime
+datetime.datetime(2023, 5, 31, 10, 47, 15, 56664)
+
+>>> ctime.strftime("%y%m%d")
+'230531'
+>>> type(ctime)
+<class 'datetime.datetime'>
+
+>>> ctime.strftime("%Y%m%d_%H%M%S")
+'20230531_104715'
+
+>>> modified.strftime("%Y%m%d_%H%M%S")
+'20230602_215317'
+>>>
+
+
+Task:
+----- 
+Q). Create a manifest file(i.e a textfile) with name manifest_current_date_time.txt
+    For a given path, write all the data of each and every file(like file_name, size, last_modified) into that manifest file
+
+file name: manifest_current_date_time.txt
+ex: manifest_20230602_215317.txt (i.e manifest file created time)
+
+i/p:
+path = r"C:\Users\Srk Reddy Somu\OneDrive\Desktop\files_practice"
+
+Ex: manifest_20230602_215317.txt
+counter, file_name, size, last_modified
+1, sample1.txt, 223, 20230602_215317
+2, sample2.csv, 332, 20230502_215317
+.
+.
+.
+
+
+--------------------
+
+
+
+
+
+
+Python Database Programming:
+============================
+- 2 types of storage areas
+1. Temporary storage areas:
+	- Ex: python objects like list, tuple, dict
+2. Permanent Storage areas
+	- Ex: File systems, databases, data warehouses, bigdata techs
+
+
+
+Databases:
+----------
+- We can store huge amt of data
+- Query Language supports
+- Data Secured (username, password)
+- Stored in the form tables
+
+
+python - Database:
+------------------
+- Sometimes as part of programming requirement we have to connect to the database and perform several operations like creating tables,
+  inserting data, updating data, deleting data etc...
+- We can use SQL language to talk to databases and we can use python to send those SQL commands to the databases.
+- Python provides in-built support for several databases like Oracle, MySqL, Sqlserver, db2, sqlite....
+- Python has seperate module for each database to connect.
+
+Ex: cx_Oracle: connect with Oracle database
+    pymysql --> for sql server
+
+
+Standard steps for Python database programming:
+-----------------------------------------------
+1. Import database specific module
+   Ex: import cx_Oracle
+
+2. Establish connection between python program and database.
+   We can create this connection object by using connect() function of the module.
+ 
+   ex: con = cx_Oracle.connect("scott/tiger@localhost")
+
+3. cursor():
+   - To execute our sql queries and to hold results some special object is required, which is nothing but cursor object.
+   - using cursor() function
+   Ex: cur = con.cursor()
+
+4. execute():
+   - Execute the SQL queries using cursor object
+   - we have the following methods
+	a. cur.execute(sqlquery)
+	ex: cur.execute("select * from customer;")
+   	
+	b. executemany(query) --> execute parameterized query
+	c. executescript(query) --> to execute a query as a script
+
+5. Commit orrollback: in DML operations (delete/update/insert)
+	commit()
+	rollback()
+
+6. To fetch the result from cursor object in case of select queries.
+	- fetchone(): to fetch only one record
+	- fetchall(): to fetch all the rows
+	- fetchmany(n): to fetch first n records
+	
+	Ex: data = cur.fetchall()
+
+7. Close the connection/resources
+	- After completing our operations it is highly recommended to close the resources in the reverse order of their opening
+	  by using close() function
+	- Ex: con.close()
+
+
+Note:
+-----
+connect()
+cursor()
+execute()
+executescript()
+executemany()
+commit()
+rollback()
+fetchone()
+fetchall()
+fetchmany(n)
+close()
+   
+
+Ex: 
+import cx_Oracle
+
+try:
+	con = cx_Oracle.connect("scott/tiger@localhost")
+	cursor = con.cursor()
+	sql_query = "create table employees(eno number, ename varchar2(10))"
+	cursor.execute(sql_query)
+	print("Table created")
+except Exception as e:
+	print("error in connecting with database.", e)
+	if con:
+		con.rollback() # reconnect to database
+finally:
+	con.close()
+
+
+Note- To connect with MySql
+	we use mysql.connector module
+	import mysql.connector
+
+
+
+
+Decorator Functions:
+====================
+- Decorator is a function which can take a function(original function) as a argument and extends its functionality 
+  and returns modified function with extended functionality.
+- Ex: input function(original func) ---> [decorator] ---> new function(with extended functionality)
+- Main objective of decorators is we can extend the functionality of existing function without modifies that function.
+
+Ex:
+
+## decorator function
+def bad_morning(func):
+    def inner(name):
+        if name == "Pratap":
+            print(f"Hello {name}, Bad morning.")
+        else:
+            func(name)
+    return inner
+
+# orininal function
+@bad_morning
+def wish(name):
+    print(f"Hello {name}, Good morning.")
+
+wish("Vishnu")
+wish("Pratap")
+
+O/p:
+----
+Hello Vishnu, Good morning.
+Hello Pratap, Bad morning.
+
+
+
+Generators:
+===========
+- Generator is a function which is responsible to generate a sequence of values.
+- We can write generator function just like a ordinary functions, but it uses 'yield' keyword to return values.
+
+Ex:
+def my_data():
+    yield 10
+    yield 20
+    yield 30
+
+g = my_data()
+
+print(g)
+print(next(g))
+print(next(g))
+print(next(g))
+print(next(g))
+
+O/p:
+---
+<generator object my_data at 0x0000025AC89790C0>
+10
+20
+30
+Traceback (most recent call last):
+  File "C:\Users\Srk Reddy Somu\PycharmProjects\pythonProject\venv\Scripts\generators_Ex.py", line 14, in <module>
+    print(next(g))
+          ^^^^^^^
+StopIteration
+
+Process finished with exit code 1
+
+Ex2:
+---
+## Generator function to have even numbers from 0 to 100
+def my_data(n):
+    for i in range(n):
+        if n%2 == 0:
+            yield i
+
+
+g = my_data(100)
+print(g)
+print(type(g))
+
+Advantages:
+-----------
+- When compared with class level iterators, generators are very easy to use.
+- Improves memory utilization and performance.
+- Generators are best suitable for reading data from large number of large files.
+- Generators work great for web scrapping and crawling.
+
+Generators vs Normal collections: With respect to size
+---------------------------------
+Ex1:
+>>> import sys
+>>> l = [i*2 for i in range(1000)]
+>>> g = (i*2 for i in range(1000))
+>>> sys.getsizeof(l)
+8856
+>>> sys.getsizeof(g)
+208
+
+Generators vs Normal collections: With respect to performance
+---------------------------------
+
+Ex2:
+---
+from datetime import datetime
+
+st = datetime.now()
+l = [i*3 for i in range(100000000)]
+et = datetime.now()
+t = et - st
+print("time taken for list comprehension: ",t)
+
+st = datetime.now()
+g = (i*3 for i in range(100000000))
+et = datetime.now()
+t = et - st
+print("Time taken for generator object: ",t)
+
+
+
+
+
+Regular Expressions:
+====================
+- If we want to represent a group of Strings according to a particular format/pattern then we should go for Regular expression.
+- It is a declarative mechanism to represent a group of strings acc. to particular format/pattern.
+- Ex1: Represent all mobile numbers
+- Ex2: Represent all mail ids
+
+Main important application areas:
+- To develop validation frameworks/validation logic
+- To develop pattern matching applications
+- To develop Translators like compilers, interpreters etc.
+- To develop digital circuits
+- To develop communication protocols like TCP/IP, UDP etc.
+
+
+- We can develop Regular expression based applications by using python module: re
+- This re module contains several inbuilt functions to use REgular expressions very easily in our apps.
+- import re
+
+1. compile():
+	- To compile pattern into RegExObject.
+	- Syntax: re.compile(pattern)
+	- Ex: pattern = re.compile("ab")
+
+2. finditer():
+	- Returns a iterator object which yields match object for every match.
+	- syntax: matcher = pattern.finditer("abaababa")
+
+	- start(): returns start index of the match
+	- end(): returns end index of the match
+	- group(): returns the matched string
+
+Ex:
+>>> import re
+>>> obj = re.compile("ab")
+>>> obj
+re.compile('ab')
+>>> type(obj)
+<class 're.Pattern'>
+>>> pattern = re.compile("ab")
+>>> matcher = pattern.finditer("abaababa")
+>>> matcher
+<callable_iterator object at 0x000001CD0C019810>
+>>> for i in matcher:
+...     print(i.start(),"....", i.end(), "....", i.group())
+...
+0 .... 2 .... ab
+3 .... 5 .... ab
+5 .... 7 .... ab
+
+- We can pass pattern directly as argument to finditer() function.
+- syntax: matcher = re.finditer(pattern, target_str)
+Ex:
+import re
+# pattern = re.compile("abc")
+# matcher = pattern.finditer("ababcaabcaaa")
+
+matcher = re.finditer("abc", "ababcaabcaaa")
+
+for i in matcher:
+     print(i.start(),"....", i.end(), "....", i.group())
+
+--------------------------------
+
+Character classes:
+------------------
+
+1. [abc] --> either a/b/c
+2. [^abc] --> except a/b/c
+3. [a-z]  --> any lower case alphabet symbol
+4. [A-Z]  --> any upper case alphabet symbol
+5. [a-zA-Z]  --> any upper or lower case alphabet symbol
+6. [0-9]  --> any digit from 0 to 9
+7. [a-zA-Z0-9] --> any alphanumeric character
+8. [^a-zA-Z0-9] --> Except alphanumeric character(special chars)
+
+
+Ex:
+---
+import re
+matcher = re.finditer("[^a-zA-Z0-9]", "a2#36@b h&6*$7")
+for i in matcher:
+     print(i.start(),"....", i.end(), "....", i.group())
+
+Predefined character classes:
+-----------------------------
+1. \s: space character
+2. \S: Any character except space
+3. \d: any digit from 0 to 9
+4. \D: any character excpet digit
+5. \w: any word character [a-zA-Z0-9]
+6. \W: any char except word (special chars)
+7. . -->> any char including special character
+
+Ex:
+---
+import re
+matcher = re.finditer("\d", "a2#36@b h&6*$7")
+for i in matcher:
+     print(i.start(),"....", i.end(), "....", i.group())
+
+
+Quantifiers:
+------------
+- We can use Quantifiers to specify no. of occurances to match.
+1. a: exact one 'a'
+2. a+: atleast one 'a'
+3. a*: any number of 'a' including zero number
+4. a?: atmost one 'a' i.e either zero or one number
+5. a{m}: exactly m number of 'a'
+6. a{m,n}: minimum m number of a's and max n number of a's
+
+Important Functions of 're' module:
+-----------------------------------
+1. match()
+2. fullmatch()
+3. search()
+4. findall()
+5. finditer()
+6. sub()
+7. subn()
+8. split()
+9. compile()
+
+
+
+Task: Check a vehicle number is valid or not for a given input
+-----
+Ex:
+---
+import re
+s = input("enter a vehicle number: ")
+m = re.fullmatch(r"AP[0-9]{2}[A-Z]{2}[0-9]{4}", s)
+if m!=None:
+    print(m)
+else:
+    print("enter a valid vehicle number")
+
+
+O/p:
+enter a vehicle number: AP39CW4919
+<re.Match object; span=(0, 10), match='AP39CW4919'>
+
+
+------------------------------------------
+
+Task: check for valid mobile number
+Task: check for valid email id
+
+
+-========================================================
+
+
+Assertions:
+------------
+2 Types:
+
+1. simple version:
+------------------
+- Syntax: assert conditional_expression
+-Ex:
+----
+def ab_sq(a,b):
+    return (a+b)**2
+assert ab_sq(5,10)==225
+d = ab_sq(5,10)+100
+print(d)
+
+2. Augmented version:
+---------------------
+
+syntax: assert conditional_expression, message
+
+Ex:
+===
+def ab_sq(a,b):
+    return (a+b)**2
+assert ab_sq(5,10)==225, "the square of a+b is 225"
+d = ab_sq(5,10)+100
+print(d)
+
+
+Unit Testing:
+-------------
+- Unit testing is a software development process in which the smallest testable parts of an application, called units, are individually scrutinized for     proper operation.
+
+- We can perform unit testing by importing unittest module
+
+Ex: ## regex_Ex.py
+------------------
+def ab_sq(a,b):
+    return (a+b)**2
+
+def final(a,b):
+    return (a-b)**2
+
+
+## tests.py
+------------
+from regex_Ex import *
+import unittest
+class SimpleTest(unittest.TestCase):
+    # Returns True or False.
+    def test(self):
+        assert ab_sq(2,3) == 25, "2, 3 : 25"
+
+    def test1(self):
+        assert final(5,8)==9
+
+==========================================================
+
+
+Python Logging:
+---------------
+- To store complete application flow and error information to a file
+- Advantages:
+	1. We can log files while performing debugging
+	2. We can provide statistics like number of requests per day
+
+
+Logging Levels:
+---------------
+1. CRITICAL --> 50 : represents a serious problem that need high attention
+2. ERROR --> 40  : represents a serious error
+3. WARNING --> 30
+4. INFO --> 20
+5. DEBUG --> 10
+6. NOTSET --> 0
+
+
+
+How to implement logging:
+-------------------------
+- To perform a logging we are required to create a file to store messages 
+- we have to specify which level of messages required to store
+- import logging
+- we can do by using basicConfig() from logging module.
+- syntax: logging.basicConfig(filename = "log.txt", level=logging.WARNING)
+
+Ex:
+---
+
+import logging
+import datetime
+
+dt = datetime.datetime.now()
+dts = dt.strftime("%Y%m%d_%H%M%S")
+file = "log_" + dts + ".txt"
+
+path = r"C:\Users\Srk Reddy Somu\OneDrive\Desktop\Python_Notes\op" + "\\"+  file
+logging.basicConfig(filename=path, filemode="w", level=logging.INFO, format="%(asctime)s: %(levelname)s: %(message)s")
+logging.info("execution start...")
+
+l = [i*2 for i in range(10000000)]
+logging.info("no of elements in a list: " + str(len(l)))
+
+
+def add(a,b):
+    return a+b
+
+try:
+    logging.info("opening a file...")
+    f = open(r"C:\Users\Srk Reddy Somu\OneDrive\Desktop\Python_Notes\file.txt", "w")
+    logging.info("file created.")
+    f.write("line1")
+    f.write("addtion is: "+str(add(10, 20)))
+except Exception as e:
+    logging.error("Error occured. "+ str(e))
+logging.info("data added")
+f.close()
+logging.info("file closed")
+
+logging.info("execution end.")
+
+
+
+
+
+=============================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
